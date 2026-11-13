@@ -18,7 +18,7 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
-from ._yardimci import p_yaz, sayi
+from ._yardimci import p_cumle, p_yaz, sayi
 from .regresyon import EkonometriHatasi
 
 
@@ -132,6 +132,149 @@ class VARSonucu:
                 ax.tick_params(labelsize=7)
         fig.suptitle(baslik or ("Ortogonal etki-tepki fonksiyonları (Cholesky)" if ortogonal else "Etki-tepki fonksiyonları"), fontsize=10)
         return _bitir(fig, baslik or "Etki-tepki fonksiyonları")
+
+    def yorumla(self):
+        """Türkçe yorum: kararlılık, bilgi ölçütleri ve her denklemde %5'te anlamlı gecikmeler."""
+        from .yorum import Yorum
+
+        kr = self.kararlilik()
+        enb = float(kr["Modül"].iloc[0])
+        y = Yorum(f"VAR({self.gecikme}) modelinin yorumu — {', '.join(self.sutunlar)}")
+        y.model_satirlari.append(
+            f"Eşlik matrisinin en büyük özdeğer modülü {sayi(enb, 4)}; "
+            + (
+                "tüm özdeğerler birim çemberin içinde olduğundan VAR kararlıdır, etki-tepki fonksiyonları sönümlenir."
+                if kr.attrs["kararli"]
+                else "birim çemberin dışında / üzerinde özdeğer var: VAR kararsızdır, etki-tepki sonuçları güvenilir değildir "
+                "(serilerin farkını almayı ya da eşbütünleşme varsa VECM'i düşün)."
+            )
+        )
+        y.model_satirlari.append(
+            f"T = {self.T}, log-olabilirlik = {sayi(self.log_olabilirlik, 2)}, AIC = {sayi(self.aic, 4)}, SBIC = {sayi(self.sbic, 4)}."
+        )
+        pv = self.p_degerleri
+        for d in self.sutunlar:
+            anlamli = [r for r in self.katsayilar.index if r != "Sabit" and pv.loc[r, d] < 0.05]
+            if anlamli:
+                y.katsayi_satirlari.append(
+                    f"{d} denkleminde %5 düzeyinde anlamlı gecikmeler: "
+                    + "; ".join(f"{r} ({sayi(self.katsayilar.loc[r, d], 4)}, {p_cumle(pv.loc[r, d])})" for r in anlamli)
+                    + "."
+                )
+            else:
+                y.katsayi_satirlari.append(f"{d} denkleminde %5 düzeyinde anlamlı gecikme yok.")
+        y.notlar.append(
+            "VAR katsayıları tek tek yorumlanmaz; değişkenler arası ilişki Granger nedensellik (vargranger / Toda-Yamamoto) ve "
+            "etki-tepki fonksiyonlarıyla (irf) anlatılır. Cholesky etki-tepkileri değişken sırasına bağlıdır."
+        )
+        return y
+
+    def rapor(
+        self,
+        dosya=None,
+        baslik: str | None = None,
+        etiketler: dict | None = None,
+        tablo_no: int = 1,
+        dil: str = "tr",
+        bicim: str = "apa",
+        etki_tepki: int | None = 10,
+    ):
+        """VAR tez raporu: yöntem metni, katsayı tablosu (SH parantez içinde), kararlılık ve isteğe bağlı etki-tepki şekli."""
+        from ._yardimci import DIL, l, tablo_sayi, yildiz
+        from .rapor import KAYNAKLAR, Rapor, Tablo, _Adlar, rapor_ayari
+
+        token = rapor_ayari(dil, bicim)
+        try:
+            en = dil == "en"
+            ad = _Adlar(etiketler)
+            kr = self.kararlilik()
+            enb = float(kr["Modül"].iloc[0])
+            degiskenler = ", ".join(ad.metin(c) for c in self.sutunlar)
+            if en:
+                yontem = (
+                    f"The dynamic relationships among {degiskenler} were analysed with a vector autoregression (VAR) model (Sims, 1980). "
+                    f"Each equation of the VAR({self.gecikme}) was estimated by OLS over T = {self.T} observations; the error covariance "
+                    f"matrix is the maximum-likelihood estimate and standard errors are reported with z statistics (Lütkepohl, 2005). "
+                    f"Information criteria: AIC = {sayi(self.aic, 3)}, HQIC = {sayi(self.hqic, 3)}, SBIC = {sayi(self.sbic, 3)}."
+                )
+                istikrar = f"The largest modulus of the companion-matrix eigenvalues is {sayi(enb, 3)}; " + (
+                    "all eigenvalues lie inside the unit circle, so the VAR satisfies the stability condition."
+                    if kr.attrs["kararli"]
+                    else "the VAR does not satisfy the stability condition."
+                )
+            else:
+                yontem = (
+                    f"{degiskenler} değişkenleri arasındaki dinamik ilişkiler vektör otoregresyon (VAR) modeliyle incelenmiştir (Sims, 1980). "
+                    f"VAR({self.gecikme}) modelinin her denklemi T = {self.T} gözlemle EKK yöntemiyle tahmin edilmiş; hata kovaryans matrisi "
+                    f"en çok olabilirlik tahminidir, standart hatalar z istatistiğiyle raporlanmıştır (Lütkepohl, 2005). Bilgi ölçütleri: "
+                    f"AIC = {sayi(self.aic, 3)}, HQIC = {sayi(self.hqic, 3)}, SBIC = {sayi(self.sbic, 3)}."
+                )
+                istikrar = f"Eşlik matrisi özdeğerlerinin en büyük modülü {sayi(enb, 3)} olup " + (
+                    "tüm özdeğerler birim çemberin içinde yer aldığından model kararlılık koşulunu sağlamaktadır."
+                    if kr.attrs["kararli"]
+                    else "model kararlılık koşulunu sağlamamaktadır; etki-tepki sonuçları temkinle yorumlanmalıdır."
+                )
+            pv = self.p_degerleri
+            satirlar = []
+            for r in self.katsayilar.index:
+                gor = l("Sabit", "Constant") if r == "Sabit" else (r.split(".", 1)[0] + "." + ad.yalin(r.split(".", 1)[1]))
+                satirlar.append([gor] + [f"{tablo_sayi(self.katsayilar.loc[r, d])}{yildiz(pv.loc[r, d])}" for d in self.sutunlar])
+                satirlar.append([""] + [f"({tablo_sayi(self.standart_hatalar.loc[r, d])})" for d in self.sutunlar])
+            t1 = Tablo(
+                tablo_no,
+                l(f"VAR({self.gecikme}) tahmin sonuçları", f"VAR({self.gecikme}) estimates"),
+                [l("Açıklayıcı", "Regressor")] + [ad.yalin(d) for d in self.sutunlar],
+                satirlar,
+                l(
+                    f"Sütunlar denklemlerdir. Parantez içinde standart hatalar. *** p < 0,01, ** p < 0,05, * p < 0,1. T = {self.T}.",
+                    f"Columns are equations. Standard errors in parentheses. *** p < 0.01, ** p < 0.05, * p < 0.1. T = {self.T}.",
+                ),
+            )
+            t2 = Tablo(
+                tablo_no + 1,
+                l("VAR kararlılık testi: eşlik matrisinin özdeğerleri", "VAR stability: eigenvalues of the companion matrix"),
+                [l("Özdeğer", "Eigenvalue"), l("Modül", "Modulus")],
+                [
+                    [
+                        f"{sayi(o.real, 4)}{'+' if o.imag >= 0 else '−'}{sayi(abs(o.imag), 4)}i"
+                        if abs(o.imag) > 1e-12
+                        else sayi(o.real, 4),
+                        sayi(m_, 4),
+                    ]
+                    for o, m_ in zip(kr["Özdeğer"], kr["Modül"])
+                ],
+                l("Tüm modüller 1'den küçükse VAR kararlıdır.", "The VAR is stable if all moduli are below 1."),
+            )
+            bloklar = [
+                ("baslik", l("Yöntem", "Method")),
+                ("paragraf", yontem),
+                ("baslik", l("Bulgular", "Results")),
+                ("tablo", t1),
+                ("paragraf", istikrar),
+                ("tablo", t2),
+            ]
+            r = Rapor(baslik or l("VAR Modeli Sonuçları", "VAR model results"), bloklar, bicim=bicim, dil=dil)
+            if etki_tepki:
+                r.bloklar.append(
+                    (
+                        "paragraf",
+                        l(
+                            f"Şekilde {etki_tepki} dönemlik ortogonal (Cholesky) etki-tepki fonksiyonları verilmiştir; değişken sırası "
+                            f"{', '.join(ad.yalin(c) for c in self.sutunlar)} şeklindedir.",
+                            f"The figure shows orthogonalised (Cholesky) impulse responses over {etki_tepki} periods; the variable ordering is "
+                            f"{', '.join(ad.yalin(c) for c in self.sutunlar)}.",
+                        ),
+                    )
+                )
+                r.sekil_ekle(
+                    self.etki_tepki_grafigi(etki_tepki), l("Ortogonal etki-tepki fonksiyonları", "Orthogonalised impulse responses")
+                )
+            r.bloklar += [("baslik", l("Kaynakça", "References")), ("liste", sorted([KAYNAKLAR["sims"], KAYNAKLAR["lutkepohl"]]))]
+            if dosya is not None:
+                r.kaydet(dosya)
+            return r
+        finally:
+            DIL.reset(token)
 
     def __str__(self) -> str:
         z, pv = self.z_degerleri, self.p_degerleri

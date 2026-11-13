@@ -54,12 +54,13 @@ Do dosyasında yorumlar (`*`, `//`, `/* */`), satır devamı (`///`), `quietly` 
 | Birleştirme | `merge 1:1` / `m:1` / `1:m` (`keep()`, `nogenerate`, `keepusing()`, `_merge`), `append using`, `reshape long` / `wide`, `collapse` (mean, sum, count, sd, min, max, median, first, last; `by()`) |
 | Tanımlayıcı | `summarize [, detail]`, `tabulate` (tek / iki yönlü), `correlate`, `pwcorr` |
 | Tahmin | `regress`, `newey`, `prais` (`corc`), `logit`, `probit`, `ologit`, `oprobit`, `mlogit` (`baseoutcome()`, `rrr`), `poisson` / `nbreg` (`exposure()`, `irr`), `tobit` (`ll()`, `ul()`), `xtreg, fe` / `xtreg, re`, `xtabond` (`lags()`, `vce(robust)`), `ivregress 2sls`, `dfuller` |
-| Zaman serisi | `var` (`lags(1/#)`), `varsoc` (`maxlag()`), `varstable`, `vargranger`, `irf graph oirf` / `irf table oirf` (`step()`; `irf create` gerekmez), `ardl` (`lags()`, `maxlags()`, `aic`) + `estat ectest`, `vecrank` (`lags()`, `trend()`) |
+| Zaman serisi | `zandrews` (`break(intercept\|trend\|both)`, `lags(#)` ya da `lagmethod(aic\|bic\|ttest)`, `maxlags()`, `trim()`, `graph`), `var` (`lags(1/#)`), `varsoc` (`maxlag()`), `varstable`, `vargranger`, `irf graph oirf` / `irf table oirf` (`step()`; `irf create` gerekmez), `ardl` (`lags()`, `maxlags()`, `aic`) + `estat ectest`, `vecrank` (`lags()`, `trend()`) |
 | Panel birim kök | `xtunitroot llc` / `ips` / `fisher …, dfuller` (`lags(#)` ya da `lags(aic #)`, `trend`, `noconstant`, `demean`) |
+| Yatay kesit bağımlılığı ve CIPS | `xtcd değişkenler` (değişkenin kendisinde), `xtcsd, pesaran` (xtreg sonrası kalıntılarda), `pescadf y, lags(#) [trend truncate]` |
 | Grafik | `rvfplot`, `qnorm [değişken]`, `histogram x [, normal bin()]`, `scatter y x`, `twoway (scatter y x) (lfit y x)`, `tsline`, `coefplot [m1 m2]`, `marginsplot`, `lroc`, `irf graph`, `graph export dosya.png [, replace]` (.png, .pdf, .svg) |
 | Testler | `ttest` (tek örneklem, `by()`, `unequal`, eşleştirilmiş), `oneway`, `tabulate x y, chi2` (`V`, `lrchi2`), `xttest0` |
-| Tahmin sonrası | `predict` (xb, residuals, olasılık), `margins [faktör] [, at(x=(8 12 16)) dydx()]` (numlist: `0(5)20`, `1/4`), `estat hettest / imtest, white / ovtest / vif / dwatson / bgodfrey / firststage / endogenous / overid / classification / gof, group(#) / abond / sargan / ectest`, `test`, `hausman`, `estimates store`, `estimates table` / `esttab [using dosya.docx \| .tex \| .xlsx \| .csv] [, replace]` / `etable`, `display` (`_b[x]`, `_se[x]`) |
-| Türkçe ekler | `yorum`, `varsayimlar`, `rapor "dosya.docx"` |
+| Tahmin sonrası | `lincom ifade [, level(#)]` (`2.bolge`, `c.x#c.x`, `_b[x]`, `_cons` adları tanınır), `predict` (xb, residuals, olasılık), `margins [faktör] [, at(x=(8 12 16)) dydx()]` (numlist: `0(5)20`, `1/4`), `estat hettest / imtest, white / ovtest / vif / dwatson / bgodfrey / firststage / endogenous / overid / classification / gof, group(#) / abond / sargan / ectest`, `test`, `hausman`, `estimates store`, `estimates table` / `esttab [using dosya.docx \| .tex \| .xlsx \| .csv] [, replace]` / `etable`, `display` (`_b[x]`, `_se[x]`) |
+| Türkçe ekler | `yorum`, `varsayimlar`, `rapor "dosya.docx"`, `todayamamoto y x [, dmax(1) lags(#) maxlag(#) sbic trend]` |
 
 **Değişken dili:**
 - Faktör değişkenleri: `i.x`, `ib2.x`, `ib(first).x`, `ib(last).x`, `ib(freq).x`, `c.x`, `x#z`, `x##z`. `c.x#c.x` kare terim olarak tanınır ve yorumda dönüm noktası hesaplanır.
@@ -133,6 +134,10 @@ Listede olmayan komutlar (ör. `xtgls`, `gmm`, `sem`) ve `merge m:m` desteklenme
 | `xtabond y x` / `, vce(robust)` | `ek.xtabond("y ~ x", veri)` / `kovaryans="saglam"` | tek adımlı; σ̂² = Δê'Δê / (2(n − k)); Sargan homoskedastik; AR(1)/AR(2) sağlam |
 | `xtunitroot llc y` | `ek.panel_birim_kok(veri, "y", "llc")` | Bartlett bant round(3,21·T^{1/3}); μ*, σ* LLC (2002) Tablo 2'den T̃'ye göre ara değer |
 | `xtunitroot ips y, lags(1)` | `ek.panel_birim_kok(veri, "y", "ips", gecikme=1)` | W-t-bar, IPS (2003) Tablo 3 momentleri |
+| `lincom x1 - x2` | `ek.lincom(m, "x1 - x2")` | c'β ve √(c'Vc); EKK / sabit etkilerde t (kümelenmişte G − 1 sd), diğerlerinde z |
+| `zandrews y, break(both)` | `ek.zivot_andrews(y, "ikisi")` | kırılma t > TB'de DU = 1; %15 kırpma; kritik değerler ZA (1992); varsayılan break(intercept) |
+| `xtcd y` / `xtcsd, pesaran` | `ek.yatay_kesit_bagimliligi(veri, "y")` / `(veri, model)` | CD = √(2/(N(N−1))) Σ √T_ij ρ_ij; dengesiz panelde ortak dönemlerle |
+| `pescadf y, lags(1)` | `ek.cips(veri, "y", gecikme=1)` | CADF: Δȳ_t, ȳ_{t−1}, Δȳ_{t−j}; T, CADF regresyonundaki dönem sayısı; Pesaran (2007) Tablo II |
 | `xtunitroot fisher y, dfuller lags(1)` | `ek.panel_birim_kok(veri, "y", "fisher", gecikme=1)` | birim p-değerleri MacKinnon (1994) yaklaşık p (Stata `dfuller` ile aynı); P, Z, L*, Pm |
 
 ## 4. Doğrulama ve bilinen farklar
@@ -157,5 +162,8 @@ Listede olmayan komutlar (ör. `xtgls`, `gmm`, `sem`) ve `merge m:m` desteklenme
 - **`xtunitroot llc` küçük T:** LLC düzeltme tablosu T̃ = 25'ten başlar; daha kısa panelde ilk satır kullanılır ve uyarı verilir. Küçük T'de LLC boş hipotezi bir miktar fazla reddeder; IPS / Fisher ile birlikte raporla.
 - **`nbreg` / sıralı modeller:** Optimizasyon statsmodels ile yapılır, standart hatalar Stata gibi gözlenen bilgi matrisinden (OIM) gelir; sayısal Hessian kullanıldığı için SH'ler beşinci-altıncı basamakta farklılaşabilir.
 - **`vargranger`:** İki değişkenli VAR'da standart Granger F testi, üç ve daha fazla değişkende VAR içinde blok dışsallık F testi verilir. Stata `vargranger` Wald χ² raporlar; karar aynıdır, istatistik ölçeği farklıdır.
+- **`zandrews`:** Stata'daki kullanıcı yazımı `zandrews` komutuyla doğrudan karşılaştırılmadı; hesap R `urca::ur.za` ile tüm aday tarihlerde aynıdır. Gecikme varsayılan olarak her aday tarihte AIC ile seçilir (`lags(#)` ile sabitlenir); Stata zandrews'un gecikme varsayılanı farklı olabilir, tezde kullandığın gecikme yöntemini açıkça yaz.
+- **`pescadf` / CIPS:** Kritik değerler Pesaran (2007) Tablo II'den N ve T'ye göre doğrusal ara değerle alınır; p-değeri verilmez (tablo dışı N, T için uyarı). Dengeli panel gerekir.
+- **Toda-Yamamoto:** Stata'da resmî komut yoktur; `todayamamoto` bu kütüphanenin ek komutudur. Wald testi denklem başına klasik EKK kovaryansıyla (R `vars` + `wald.test` uygulamasıyla aynı) yapılır.
 - **`ardl`:** Gecikmeler varsayılan olarak BIC ile (Stata `ardl` varsayılanı), `aic` seçeneğiyle AIC ile seçilir. Sınır testi Pesaran-Shin-Smith (2001) durum 3'tür.
 - **Eksik değer kuralı:** Python fonksiyonlarında (`ek.ekk` vb.) pandas kuralları geçerlidir; eksik gözlemli satırlar modelden çıkarılır. Stata'nın "eksik değer +∞" kuralı yalnızca Stata arayüzündeki ifadelerde (`if`, `gen`, `replace`) uygulanır.

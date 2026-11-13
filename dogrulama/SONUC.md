@@ -28,6 +28,11 @@ uyguladıkları yazılan seçenekler kullanılır (estimatr `se_type = "stata"`,
 | Tobit: katsayı, SH, σ, log-olabilirlik | R AER tobit | 8 | 3.6e-08 | ✅ |
 | ROC eğrisi altındaki alan (lroc) | R pROC | 1 | 0.0e+00 | ✅ |
 | Panel birim kök: LLC, IPS W-t-bar, Fisher Pm ve Z | R plm purtest | 5 | 6.9e-12 | ✅ |
+| Toda-Yamamoto nedensellik (Wald χ²) | R lm + car::linearHypothesis | 2 | 6.9e-11 | ✅ |
+| Zivot-Andrews (A, B, C): istatistik ve kırılma tarihi | R urca ur.za | 6 | 5.6e-11 | ✅ |
+| Yatay kesit bağımlılığı: LM, ölçekli LM, Pesaran CD | R plm pcdtest | 3 | 1.4e-16 | ✅ |
+| CIPS (sabitli; trendli kesik) | R plm cipstest | 2 | 7.5e-11 | ✅ |
+| lincom: tahmin ve standart hata | R lm vcov ile c'b, √(c'Vc) | 2 | 4.8e-14 | ✅ |
 
 Ölçüt: göreli fark < 10⁻⁶.
 
@@ -40,6 +45,12 @@ uyguladıkları yazılan seçenekler kullanılır (estimatr `se_type = "stata"`,
 - Sıralı modellerin standart hataları: R `polr` Hessian'ı sayısal türevle hesapladığından ~10⁻⁵ göreli farkla tutar (testlerde).
 - `nbreg` standart hataları: R `glm.nb` α'yı sabit kabul eder; Stata gibi β ve α'yı birlikte (tam bilgi matrisi) kullanan
   ekonometri-tr ile ~%0,3 farklıdır. Katsayılar, α ve log-olabilirlik birebir aynıdır.
+- nbreg aşırı yayılımlı firma çalışan sayısıyla karşılaştırılır. Varyansın ortalamadan küçük olduğu veride (α → 0 sınırı)
+  R glm.nb θ → ∞'da bozuk sonuç (log-olabilirlik 0) verir; ekonometri-tr orada Stata gibi Poisson limitini raporlar (LR = 0).
+- CIPS: plm'in p-değeri tablosu T < 10'da ara değerlemede hata verdiği için R tarafında yalnız p-değeri adımı devre dışı
+  bırakılır; istatistik plm'in kendisinde hesaplanır. Kritik değerler Pesaran (2007) Tablo II ile ayrıca testlerde sınanır.
+- Zivot-Andrews: urca tüm tarihleri tarar (kırpma yok); karşılaştırmada kirpma=0 kullanılır. Varsayılan kırpma %15'tir.
+- Fark hesabında NaN çıkan bir değer başarısızlık sayılır.
 - LLC: plm düzeltme tablosunu T ile okur; ekonometri-tr varsayılan olarak makaledeki ve Stata'daki gibi T̃ = T − p̄ − 1 kullanır.
   Karşılaştırmada aynı tablo satırı seçilir. Kısa panelde (T < 25) iki taraf da tablonun ilk satırını kullanır.
 - R `plm` paketinin `vcovHC(type = "sss")` seçeneği küçük örneklem düzeltmesinde sabit terimi saymaz; bu yüzden sabit etkiler

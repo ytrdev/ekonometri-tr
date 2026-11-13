@@ -818,6 +818,13 @@ def nbreg(formul: str, veri: pd.DataFrame, kovaryans: str = "klasik", kume: str 
                 en_iyi = sonuc
         params = np.r_[en_iyi.x[:-1], np.exp(en_iyi.x[-1])]
         llf = float(mod.loglike(params))
+    pois = poisson(formul, veri, maruziyet=maruziyet)
+    sinirda = params[-1] < 1e-6
+    if sinirda:
+        # α ≈ 0: aşırı yayılım yok, model Poisson'a indirgenir. Çok küçük α'da NB olabilirliği sayısal olarak güvenilmez
+        # olduğundan β ve log-olabilirlik Poisson limitinden alınır (LR = 0, p = 1; Stata da bu durumda χ̄² = 0 raporlar).
+        params = np.r_[pois._parametreler, max(float(params[-1]), 1e-8)]
+        llf = pois.log_olabilirlik
     alfa = params[-1]
     H_inv = np.linalg.inv(-mod.hessian(params))
     kov, kume_kod = _kovaryans_sec(kovaryans, kume, veri_tum, X_df.index)
@@ -827,9 +834,13 @@ def nbreg(formul: str, veri: pd.DataFrame, kovaryans: str = "klasik", kume: str 
         V, kov_ac = _sandvic(H_inv, mod.score_obs(params), kov, kume_kod)
     se_alfa = np.sqrt(V[-1, -1])
     ek_df = pd.DataFrame({"Değer": [np.log(alfa), alfa], "Std. hata": [se_alfa / alfa, se_alfa]}, index=["/ln α", "α"])
-    pois = poisson(formul, veri, maruziyet=maruziyet)
-    lr = max(0.0, 2 * (llf - pois.log_olabilirlik))
-    ll0 = float(NegativeBinomial(y, np.ones((n, 1)), loglike_method="nb2", offset=ofset).fit(disp=False, maxiter=500).llf)
+    lr = 0.0 if sinirda else max(0.0, 2 * (llf - pois.log_olabilirlik))
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        ll0 = float(NegativeBinomial(y, np.ones((n, 1)), loglike_method="nb2", offset=ofset).fit(disp=False, maxiter=500).llf)
+    # NB, Poisson'u kapsar: sabitli NB'nin en büyük olabilirliği sabitli Poisson'unkinden küçük olamaz (α → 0 sınırında
+    # optimizasyon yakınsamazsa bu alt sınır kullanılır).
+    ll0 = max(ll0, pois.log_olabilirlik_sifir) if np.isfinite(ll0) else pois.log_olabilirlik_sifir
 
     def tahmin(pr, Xm):
         return np.exp(Xm @ pr[:k] + _ofset(ofset, len(Xm)))[:, None]

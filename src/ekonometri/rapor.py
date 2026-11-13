@@ -27,6 +27,18 @@ KAYNAKLAR = {
     "mackinnon96": "MacKinnon, J. G. (1996). Numerical distribution functions for unit root and cointegration tests. Journal of Applied Econometrics, 11(6), 601–618.",
     "mackinnon2010": "MacKinnon, J. G. (2010). Critical values for cointegration tests (Queen's Economics Department Working Paper No. 1227). Queen's University.",
     "eg": "Engle, R. F., & Granger, C. W. J. (1987). Co-integration and error correction: Representation, estimation, and testing. Econometrica, 55(2), 251–276.",
+    "sims": "Sims, C. A. (1980). Macroeconomics and reality. Econometrica, 48(1), 1–48.",
+    "lutkepohl": "Lütkepohl, H. (2005). New introduction to multiple time series analysis. Springer.",
+    "llc": "Levin, A., Lin, C.-F., & Chu, C.-S. J. (2002). Unit root tests in panel data: Asymptotic and finite-sample properties. Journal of Econometrics, 108(1), 1–24.",
+    "ips": "Im, K. S., Pesaran, M. H., & Shin, Y. (2003). Testing for unit roots in heterogeneous panels. Journal of Econometrics, 115(1), 53–74.",
+    "maddala_wu": "Maddala, G. S., & Wu, S. (1999). A comparative study of unit root tests with panel data and a new simple test. Oxford Bulletin of Economics and Statistics, 61(S1), 631–652.",
+    "choi": "Choi, I. (2001). Unit root tests for panel data. Journal of International Money and Finance, 20(2), 249–272.",
+    "pesaran_cd": "Pesaran, M. H. (2004). General diagnostic tests for cross section dependence in panels (CESifo Working Paper No. 1229). CESifo.",
+    "pesaran2015": "Pesaran, M. H. (2015). Testing weak cross-sectional dependence in large panels. Econometric Reviews, 34(6–10), 1089–1117.",
+    "pesaran2007": "Pesaran, M. H. (2007). A simple panel unit root test in the presence of cross-section dependence. Journal of Applied Econometrics, 22(2), 265–312.",
+    "bfk2012": "Baltagi, B. H., Feng, Q., & Kao, C. (2012). A Lagrange multiplier test for cross-sectional dependence in a fixed effects panel data model. Journal of Econometrics, 170(1), 164–177.",
+    "zivot_andrews": "Zivot, E., & Andrews, D. W. K. (1992). Further evidence on the great crash, the oil-price shock, and the unit-root hypothesis. Journal of Business & Economic Statistics, 10(3), 251–270.",
+    "toda_yamamoto": "Toda, H. Y., & Yamamoto, T. (1995). Statistical inference in vector autoregressions with possibly integrated processes. Journal of Econometrics, 66(1–2), 225–250.",
     "granger": "Granger, C. W. J. (1969). Investigating causal relations by econometric models and cross-spectral methods. Econometrica, 37(3), 424–438.",
     "pesaran": "Pesaran, M. H., Shin, Y., & Smith, R. J. (2001). Bounds testing approaches to the analysis of level relationships. Journal of Applied Econometrics, 16(3), 289–326.",
     "baltagi": "Baltagi, B. H. (2021). Econometric analysis of panel data (6. baskı). Springer.",
@@ -1360,3 +1372,23 @@ def _rapor_olustur(sonuc, baslik, etiketler, tablo_no, yontem, kaynakca, zaman_s
 
 
 __all__ = ["Rapor", "Tablo", "rapor_olustur"]
+
+
+def test_raporu(
+    baslik: str, paragraflar: list[str], tablo: Tablo, kaynaklar: list[str], dosya=None, dil: str = "tr", bicim: str = "apa"
+) -> Rapor:
+    """Tek tablolu test raporu (yöntem + bulgu paragrafı, tablo, kaynakça). Çağıran DIL ayarını yapmış olmalı."""
+    r = Rapor(
+        baslik,
+        [
+            ("paragraf", " ".join(paragraflar)),
+            ("tablo", tablo),
+            ("baslik", "References" if dil == "en" else "Kaynakça"),
+            ("liste", sorted(set(kaynaklar))),
+        ],
+        bicim=bicim,
+        dil=dil,
+    )
+    if dosya is not None:
+        r.kaydet(dosya)
+    return r

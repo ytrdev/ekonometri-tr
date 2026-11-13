@@ -35,16 +35,18 @@ Birleştirme  : merge 1:1 / m:1 / 1:m, append, reshape long / wide, collapse
 Tanımlayıcı  : summarize [, detail], tabulate (tek / iki yönlü), correlate, pwcorr [, sig]
 Tahmin       : regress, newey, prais, logit, probit, ologit, oprobit, mlogit [, baseoutcome(#)],
                poisson / nbreg [, exposure() irr], tobit [, ll(#) ul(#)], xtreg (fe / re), xtabond, ivregress 2sls
-Zaman serisi : dfuller, var [, lags(1/#)], varsoc [, maxlag(#)], varstable, vargranger, irf graph|table oirf [, step(#)],
+Zaman serisi : dfuller, zandrews [, break(intercept|trend|both) lagmethod(aic|bic|ttest) lags(#) maxlags(#) trim(#)],
+               var [, lags(1/#)], varsoc [, maxlag(#)], varstable, vargranger, irf graph|table oirf [, step(#)],
                ardl y x [, lags(#) maxlags(#) aic] + estat ectest, vecrank [, lags(#) trend()]
-Panel        : xtunitroot llc | ips | fisher (dfuller) [, lags(# | aic #) trend demean], xttest0, hausman
+Panel        : xtunitroot llc | ips | fisher (dfuller) [, lags(# | aic #) trend demean], pescadf [, lags(#) trend],
+               xtcd (değişken), xtcsd (xtreg sonrası), xttest0, hausman
 Testler      : ttest, oneway, tabulate …, chi2 (V, lrchi2)
-Sonrası      : predict, margins [faktör] [, at(x=(1 2 3)) dydx()], test, estimates store, esttab [using dosya.docx|.tex|.xlsx],
+Sonrası      : lincom, predict, margins [faktör] [, at(x=(1 2 3)) dydx()], test, estimates store, esttab [using dosya.docx|.tex|.xlsx],
                estat (hettest, imtest white, ovtest, vif, dwatson, bgodfrey, firststage, endogenous, overid,
                classification, gof [, group(10)], abond, sargan, ectest), display
 Grafik       : rvfplot, qnorm, histogram [, normal], scatter, twoway (scatter)(lfit), tsline, coefplot, marginsplot, lroc,
                irf graph, graph export dosya.png [, replace]
-Türkçe ekler : yorum, varsayimlar, rapor "dosya.docx"
+Türkçe ekler : yorum, varsayimlar, rapor "dosya.docx", todayamamoto y x [, dmax(1) lags(#) maxlag(#) sbic trend]
 Seçenekler   : vce(robust | cluster değişken | hc2 | hc3), robust, noconstant, small, fe, re, lags(#), trend, detail
 Değişken dili: i.x, ib#.x, ib(first|last).x, c.x, x#z, x##z, L. L#. D. F., x*, x1-x5, if, in
 """.strip()
@@ -2236,6 +2238,136 @@ class Stata:
         det = "trend" if sec.get("trend") else ("yok" if _secenek(sec, "noconstant", 3) else "sabit")
         sonuc = panel_birim_kok(
             d, self._ad_coz(ana.split()[0]), test, xt[0], xt[1], gecikme, en_fazla, det, ortalamadan_arindir=bool(sec.get("demean"))
+        )
+        self._yaz(sonuc)
+        return sonuc
+
+    # ------------------------------------------------------------------ lincom, kırılma, yatay kesit, CIPS, Toda-Yamamoto
+    def _stata_terim(self, ifade: str, adlar: list[str]) -> str:
+        """Stata terim adlarını model adlarına çevir: 2.bolge → C(bolge)[T.<etiket>], c.x#c.x → I(x ** 2), gen'li değişkenler."""
+        etiketler = (self.veri.attrs.get("deger_etiketleri", {}) if self.veri is not None else {}) or {}
+
+        def faktor(m):
+            kod, ad = m.group(1), self._ad_coz(m.group(2))
+            adaylar = [str(kod), f"{float(kod)}"]
+            if ad in etiketler and int(kod) in etiketler[ad]:
+                adaylar.insert(0, str(etiketler[ad][int(kod)]))
+            for a in adlar:
+                if (a.startswith(f"C({ad})[") or a.startswith(f"C({ad},")) and any(a.endswith(f"[T.{c}]") for c in adaylar):
+                    return a
+            raise _hata(f"{m.group(0)} modelde yok (temel düzey olabilir). Terimler: {adlar}")
+
+        ifade = re.sub(r"_b\[\s*([^\]]+?)\s*\]", r"\1", ifade)  # _b[x] → x (sonra ad eşlemesinden geçer)
+        ifade = re.sub(r"(?<![\w.])c\.([A-Za-z_]\w*)#c\.\1(?!\w)", lambda m: f"I({self._ad_coz(m.group(1))} ** 2)", ifade)
+        ifade = re.sub(r"(?<![\w.\[])(\d+)b?\.([A-Za-z_]\w*)", faktor, ifade)
+        return re.sub(r"(?<![\w.(\[])([A-Za-z_]\w*)(?![\w(\[])", lambda m: self._donusumler.get(m.group(1), m.group(1)), ifade)
+
+    def _k_lincom(self, metin: str):
+        from .kombinasyon import lincom
+
+        m = self._model_gerekli()
+        ana, _, _, sec = self._parcala(metin)
+        if not ana.strip():
+            raise _hata("Söz dizimi: lincom x1 + 2*x2  (ör. lincom egitim - tecrube, lincom _cons + 2.bolge)")
+        adlar = list(getattr(m, "katsayilar", pd.Series(dtype=float)).index)
+        guven = _secenek(sec, "level", 3)
+        sonuc = lincom(m, self._stata_terim(ana, adlar), guven=float(guven) / 100 if isinstance(guven, str) else 0.95)
+        sonuc.ifade = ana.strip()
+        self._yaz(sonuc)
+        return sonuc
+
+    def _k_zandrews(self, metin: str):
+        from .kirilma import zivot_andrews
+
+        ana, kosul, aralik, sec = self._parcala(metin)
+        d = self._ts_verisi(kosul, aralik)
+        ad = self._ad_coz(ana.split()[0])
+        kirilma = str(_secenek(sec, "break", 3) or "intercept").lower()
+        model = {"intercept": "sabit", "trend": "trend", "both": "ikisi"}.get(kirilma)
+        if model is None:
+            raise _hata("break() seçenekleri: intercept (varsayılan), trend, both")
+        yontem = _secenek(sec, "lagmethod", 4)
+        lags = _secenek(sec, "lags", 3)
+        mx = _secenek(sec, "maxlags", 4)
+        if isinstance(lags, str):
+            gecikme = int(lags)
+        elif isinstance(yontem, str):
+            gecikme = {"aic": "aic", "bic": "bic", "ttest": "t", "input": None}.get(yontem.lower())
+            if gecikme is None:
+                raise _hata("lagmethod(): aic, bic ya da ttest; sabit gecikme için lags(#)")
+        else:
+            gecikme = "aic"
+        trim = _secenek(sec, "trim", 3)
+        z = d.attrs["tsset"]
+        seri = d.set_index(z)[ad] if isinstance(z, str) and z in d.columns else d[ad]
+        sonuc = zivot_andrews(
+            seri, model, gecikme, int(mx) if isinstance(mx, str) else None, float(trim) if isinstance(trim, str) else 0.15, ad=ad
+        )
+        self._yaz(sonuc)
+        if sec.get("graph"):
+            self._son_sekil = sonuc.grafik()
+        return sonuc
+
+    def _k_xtcd(self, metin: str):
+        from .kesit import yatay_kesit_bagimliligi
+
+        ana, kosul, aralik, _ = self._parcala(metin)
+        v = self._veri_gerekli()
+        xt = v.attrs.get("xtset")
+        if xt is None:
+            raise _hata("xtcd için önce panel yapısını tanımla: xtset birim zaman")
+        d = v.loc[self._ornek(kosul, aralik)].copy()
+        d.attrs = v.attrs
+        sonuclar = [yatay_kesit_bagimliligi(d, self._ad_coz(a), xt[0], xt[1]) for a in self._degiskenler(ana)]
+        for s_ in sonuclar:
+            self._yaz(s_)
+        return sonuclar[0] if len(sonuclar) == 1 else sonuclar
+
+    def _k_xtcsd(self, metin: str):
+        from .kesit import yatay_kesit_bagimliligi
+        from .panel import PanelSonuc
+
+        m = self._model_gerekli(PanelSonuc)
+        xt = self.veri.attrs.get("xtset")
+        sonuc = yatay_kesit_bagimliligi(self.veri, m, xt[0], xt[1])
+        self._yaz(sonuc)
+        return sonuc
+
+    def _k_pescadf(self, metin: str):
+        from .kesit import cips
+
+        ana, kosul, aralik, sec = self._parcala(metin)
+        v = self._veri_gerekli()
+        xt = v.attrs.get("xtset")
+        if xt is None:
+            raise _hata("pescadf için önce panel yapısını tanımla: xtset birim zaman")
+        lags = _secenek(sec, "lags", 3)
+        if not isinstance(lags, str):
+            raise _hata("Gecikme sayısını ver: pescadf y, lags(1)")
+        d = v.loc[self._ornek(kosul, aralik)].copy()
+        d.attrs = v.attrs
+        det = "trend" if sec.get("trend") else ("yok" if _secenek(sec, "noconstant", 3) else "sabit")
+        sonuc = cips(d, self._ad_coz(ana.split()[0]), xt[0], xt[1], int(lags), det, kesik=bool(sec.get("truncate") or sec.get("kesik")))
+        self._yaz(sonuc)
+        return sonuc
+
+    def _k_todayamamoto(self, metin: str):
+        from .nedensellik import toda_yamamoto
+
+        ana, kosul, aralik, sec = self._parcala(metin)
+        d = self._ts_verisi(kosul, aralik)
+        lags = _secenek(sec, "lags", 3)
+        dmax = _secenek(sec, "dmax", 2)
+        mx = _secenek(sec, "maxlag", 4)
+        olcut = next((o for o in ("aic", "sbic", "hqic", "fpe") if sec.get(o)), "aic")
+        sonuc = toda_yamamoto(
+            d,
+            [self._ad_coz(a) for a in self._degiskenler(ana)],
+            gecikme=int(lags) if isinstance(lags, str) else None,
+            dmax=int(dmax) if isinstance(dmax, str) else 1,
+            bilgi_olcutu=olcut,
+            en_fazla_gecikme=int(mx) if isinstance(mx, str) else None,
+            trend=bool(sec.get("trend")),
         )
         self._yaz(sonuc)
         return sonuc

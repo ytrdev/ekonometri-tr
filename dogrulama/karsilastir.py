@@ -133,7 +133,7 @@ def ek_sonuclari() -> dict[str, float]:
     yaz("poisson_b", po.katsayilar)
     yaz("poisson_se", po.standart_hatalar)
     s["poisson_ll"] = po.log_olabilirlik
-    nb = ek.nbreg("kardes ~ egitim + tecrube", g)
+    nb = ek.nbreg("calisan ~ np.log(sermaye) + arge", fr)  # aşırı yayılımlı sayım; R tarafıyla aynı
     yaz("nbreg_b", nb.katsayilar)
     s["nbreg_alfa"] = float(nb.ek_parametreler.loc["α", "Değer"])
     s["nbreg_ll"] = nb.log_olabilirlik
@@ -159,6 +159,25 @@ def ek_sonuclari() -> dict[str, float]:
         s["ips_sabit_L1"] = pbk(fr, "ls", "ips", "firma", "yil", 1).istatistikler.loc["W-t-bar", "Değer"]
         fi = pbk(fr, "ls", "fisher", "firma", "yil", 0).istatistikler["Değer"]
         s["fisher_Pm_L0"], s["fisher_Z_L0"] = fi["Pm"], fi["Z (ters normal)"]
+
+    # Toda-Yamamoto, Zivot-Andrews, lincom
+    ty = ek.toda_yamamoto(ih.assign(li=np.log(ih["ihracat"]), lk=np.log(ih["reel_kur"])), ["li", "lk"], gecikme=2, dmax=1).tablo
+    s["ty_lk_li"] = float(ty.loc[(ty.Neden == "lk") & (ty.Etkilenen == "li"), "χ²"].iloc[0])
+    s["ty_li_lk"] = float(ty.loc[(ty.Neden == "li") & (ty.Etkilenen == "lk"), "χ²"].iloc[0])
+    for m_r, m_ek in (("intercept", "sabit"), ("trend", "trend"), ("both", "ikisi")):
+        za = ek.zivot_andrews(np.log(ih["ihracat"]).to_numpy(), m_ek, gecikme=2, kirpma=0)
+        s[f"za_{m_r}"], s[f"za_tb_{m_r}"] = za.istatistik, float(za.kirilma_sirasi)
+    lc = ek.lincom(m, "egitim - tecrube")
+    s["lincom_tahmin"], s["lincom_sh"] = lc.tahmin, lc.std_hata
+
+    # yatay kesit bağımlılığı ve CIPS
+    fx = ek.xtset(fr, "firma", "yil")
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        cd = ek.yatay_kesit_bagimliligi(fx, "ls").tablo["İstatistik"]
+        s["cd_ls[lm]"], s["cd_ls[sclm]"], s["cd_ls[cd]"] = cd["Breusch-Pagan LM"], cd["Pesaran ölçekli LM"], cd["Pesaran CD"]
+        s["cips_ls"] = ek.cips(fx, "ls", gecikme=1).istatistik
+        s["cips_ls_trend"] = ek.cips(fx, "ls", gecikme=1, deterministik="trend", kesik=True).istatistik
     return s
 
 
@@ -209,6 +228,15 @@ GRUPLAR = [
         ["llc_sabit_L0", "llc_trend_L1", "ips_sabit_L1", "fisher_Pm_L0", "fisher_Z_L0"],
         "R plm purtest",
     ),
+    ("Toda-Yamamoto nedensellik (Wald χ²)", ["ty_lk_li", "ty_li_lk"], "R lm + car::linearHypothesis"),
+    (
+        "Zivot-Andrews (A, B, C): istatistik ve kırılma tarihi",
+        ["za_intercept", "za_trend", "za_both", "za_tb_intercept", "za_tb_trend", "za_tb_both"],
+        "R urca ur.za",
+    ),
+    ("Yatay kesit bağımlılığı: LM, ölçekli LM, Pesaran CD", ["cd_ls"], "R plm pcdtest"),
+    ("CIPS (sabitli; trendli kesik)", ["cips_ls", "cips_ls_trend"], "R plm cipstest"),
+    ("lincom: tahmin ve standart hata", ["lincom_tahmin", "lincom_sh"], "R lm vcov ile c'b, √(c'Vc)"),
 ]
 
 
@@ -254,8 +282,8 @@ def main() -> int:
         anahtarlar = [k for k in dis if any(k == o or k.startswith(o + "[") for o in onekler)]
         eksik = [k for k in anahtarlar if k not in ek_s]
         farklar = [abs(ek_s[k] - dis[k]) / max(abs(dis[k]), 1e-12) for k in anahtarlar if k in ek_s]
-        en = max(farklar) if farklar else float("nan")
-        tamam = bool(farklar) and not eksik and en < 1e-6
+        en = max(farklar, key=lambda x: np.inf if np.isnan(x) else x) if farklar else float("nan")
+        tamam = bool(farklar) and not eksik and all(np.isfinite(farklar)) and en < 1e-6  # NaN fark başarısızlıktır
         hepsi_tamam &= tamam
         satirlar.append((baslik, arac, len(farklar), en, "✅" if tamam else "❌", eksik))
     md = [
@@ -283,6 +311,12 @@ def main() -> int:
         "- Sıralı modellerin standart hataları: R `polr` Hessian'ı sayısal türevle hesapladığından ~10⁻⁵ göreli farkla tutar (testlerde).",
         "- `nbreg` standart hataları: R `glm.nb` α'yı sabit kabul eder; Stata gibi β ve α'yı birlikte (tam bilgi matrisi) kullanan",
         "  ekonometri-tr ile ~%0,3 farklıdır. Katsayılar, α ve log-olabilirlik birebir aynıdır.",
+        "- nbreg aşırı yayılımlı firma çalışan sayısıyla karşılaştırılır. Varyansın ortalamadan küçük olduğu veride (α → 0 sınırı)",
+        "  R glm.nb θ → ∞'da bozuk sonuç (log-olabilirlik 0) verir; ekonometri-tr orada Stata gibi Poisson limitini raporlar (LR = 0).",
+        "- CIPS: plm'in p-değeri tablosu T < 10'da ara değerlemede hata verdiği için R tarafında yalnız p-değeri adımı devre dışı",
+        "  bırakılır; istatistik plm'in kendisinde hesaplanır. Kritik değerler Pesaran (2007) Tablo II ile ayrıca testlerde sınanır.",
+        "- Zivot-Andrews: urca tüm tarihleri tarar (kırpma yok); karşılaştırmada kirpma=0 kullanılır. Varsayılan kırpma %15'tir.",
+        "- Fark hesabında NaN çıkan bir değer başarısızlık sayılır.",
         "- LLC: plm düzeltme tablosunu T ile okur; ekonometri-tr varsayılan olarak makaledeki ve Stata'daki gibi T̃ = T − p̄ − 1 kullanır.",
         "  Karşılaştırmada aynı tablo satırı seçilir. Kısa panelde (T < 25) iki taraf da tablonun ilk satırını kullanır.",
         '- R `plm` paketinin `vcovHC(type = "sss")` seçeneği küçük örneklem düzeltmesinde sabit terimi saymaz; bu yüzden sabit etkiler',

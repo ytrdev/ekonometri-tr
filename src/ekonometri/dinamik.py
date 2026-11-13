@@ -53,6 +53,7 @@ class DinamikSonuc:
     kovaryans_turu: str = "klasik"
     ar_testleri: dict = None  # {1: (z, p), 2: (z, p)} — Arellano-Bond fark kalıntılarında otokorelasyon (Stata estat abond)
     sigma2: float = float("nan")
+    kovaryans_matrisi: pd.DataFrame = None
 
     def __str__(self) -> str:
         satirlar = [
@@ -347,6 +348,7 @@ def xtabond(
         kovaryans,
         ar,
         sigma2,
+        pd.DataFrame(V, index=adlar, columns=adlar),
     )
 
 

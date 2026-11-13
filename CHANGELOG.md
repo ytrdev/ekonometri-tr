@@ -2,6 +2,25 @@
 
 Biçim [Keep a Changelog](https://keepachangelog.com/tr-TR/1.1.0/) önerisine, sürüm numaraları [Anlamsal Sürümleme](https://semver.org/lang/tr/) kurallarına uyar.
 
+## [Yayımlanmamış]
+
+### Eklendi
+- **Toda-Yamamoto nedensellik:** `ek.toda_yamamoto()` — düzeyde VAR(p + dmax), ilk p gecikmeye Wald χ²; çok değişkenlide "tümü" satırı; tez raporu. Stata ek komutu `todayamamoto`
+- **Zivot-Andrews:** `ek.zivot_andrews()` — model A / B / C, kırılma tarihi, ZA (1992) kritik değerleri, sabit ya da AIC / BIC / t ile seçilen gecikme, kırılma grafiği, çok seri için `ek.zivot_andrews_raporu()`. Stata `zandrews`
+- **Yatay kesit bağımlılığı:** `ek.yatay_kesit_bagimliligi()` — Breusch-Pagan LM, Pesaran ölçekli LM, Pesaran CD (dengesiz panel dahil), sabit etkiler kalıntısında yanlılığı düzeltilmiş LM. Stata `xtcd`, `xtcsd, pesaran`
+- **CIPS:** `ek.cips()` — Pesaran (2007) CADF / CIPS, kesik seçenek, Tablo II kritik değerleri. Stata `pescadf`
+- **lincom:** `ek.lincom()` ve Stata `lincom` — tüm modellerde katsayıların doğrusal birleşimi; Stata faktör adları (`2.bolge`, `c.x#c.x`, `_b[x]`)
+- **Raporlar:** VAR için `rapor()` (katsayı tablosu, kararlılık, etki-tepki şekli) ve `yorumla()`; panel birim kök (`ek.panel_birim_kok_raporu`), yatay kesit (`ek.yatay_kesit_raporu`) ve CIPS (`ek.cips_raporu`) tez tabloları
+- xtabond sonucunda `kovaryans_matrisi`
+- Bağımsız doğrulamaya 5 yeni grup (R car, urca, plm): toplam 27
+
+### Düzeltildi
+- `nbreg`: α → 0 sınırında (varyans ≤ ortalama) Stata gibi Poisson limiti raporlanır; sayısal hatadan doğan sahte LR ve sabitli modelin Poisson'dan küçük log-olabilirliği giderildi
+- Doğrulama betiği NaN farkları başarı sayıyordu; artık başarısızlık sayılıyor (önceki sürümde nbreg satırı bu yüzden yanlışlıkla ✅ görünüyordu)
+
+### Değişti
+- Stata arayüzünde VAR sonrası `yorum` ve `rapor` artık çalışıyor
+
 ## [0.8.0] — 2026-11-13
 
 ### Eklendi

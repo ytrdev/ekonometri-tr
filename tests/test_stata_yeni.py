@@ -172,13 +172,18 @@ def test_eksen_bicimi():
     assert _virgul(1.4e-05) == "1,4×10⁻⁵" and _virgul(2.7e-17) == "0" and _virgul(400000) == "400.000" and _virgul(0.25) == "0,25"
 
 
-def test_tarih_kosulu_ve_desteklenmeyen_sonrasi(s):
+def test_tarih_kosulu_ve_desteklenmeyen_sonrasi(s, tmp_path):
     s("sysuse ihracat")  # donem: çeyreklik Period sütunu
     assert s("count if donem >= tq(2010q1)") == s("count if donem >= 2010q1") == 60
     assert s("var ihracat reel_kur if donem >= 2010q1, lags(1)").T == 59
-    for k in ("yorum", "rapor v.docx", "predict w"):
-        with pytest.raises(ek.EkonometriHatasi):
-            s(k)
+    assert "kararlı" in str(s("yorum"))  # VAR'ın yorumu ve raporu var
+    s(f"rapor {tmp_path / 'v.docx'}")
+    assert (tmp_path / "v.docx").exists()
+    with pytest.raises(ek.EkonometriHatasi):
+        s("predict w")  # VAR sonrası predict desteklenmiyor
+    s("ardl ihracat reel_kur")
+    with pytest.raises(ek.EkonometriHatasi):
+        s("predict w")
 
 
 def test_faktor_marginsplot(s):
@@ -226,3 +231,56 @@ def test_nbreg_asiri_yayilim_yokken():
     nb, po = ek.nbreg("c ~ x", d), ek.poisson("c ~ x", d)
     assert np.all(np.isfinite(nb.katsayilar)) and np.allclose(nb.katsayilar, po.katsayilar, atol=1e-4)
     assert nb.ek_parametreler.loc["α", "Değer"] < 1e-3 and nb.ek_bilgi["alfa_lr"][1] > 0.4
+    # paket verisinde varyans < ortalama (α tam sınırda): Stata gibi Poisson limiti, LR = 0, sahte olabilirlik artışı yok
+    g = ek.veri.yukle("getiri")
+    nb, po = ek.nbreg("kardes ~ egitim + tecrube", g), ek.poisson("kardes ~ egitim + tecrube", g)
+    assert nb.log_olabilirlik == po.log_olabilirlik and nb.ek_bilgi["alfa_lr"] == (0.0, 1.0)
+    assert nb.log_olabilirlik_sifir >= po.log_olabilirlik_sifir and np.allclose(nb.katsayilar, po.katsayilar)
+
+
+# --------------------------------------------------------------------------- lincom, zandrews, xtcd, xtcsd, pescadf, todayamamoto
+def test_stata_lincom_ad_eslemesi(s):
+    s("sysuse ucret")
+    s("encode bolge, gen(b2)")
+    s("gen lnw = ln(ucret)")
+    s("gen kat = 1 + (egitim > 12)")
+    m = s("regress lnw egitim i.cinsiyet ib2.b2 c.tecrube##c.tecrube i.kat")
+    et = s.veri.attrs["deger_etiketleri"]["b2"]
+    a = s("lincom _cons + 3.b2")
+    assert np.isclose(a.tahmin, ek.lincom(m, f"Intercept + C(b2)[T.{et[3]}]").tahmin)
+    b = s("lincom tecrube + 2*30*c.tecrube#c.tecrube")
+    assert np.isclose(b.tahmin, m.katsayilar["tecrube"] + 60 * m.katsayilar["I(tecrube ** 2)"])
+    assert np.isclose(s("lincom _b[egitim]*2").tahmin, 2 * m.katsayilar["egitim"])
+    c = s("lincom 2.kat + egitim, level(90)")
+    assert c.guven == 0.9 and np.isclose(c.tahmin, m.katsayilar["C(kat)[T.2]"] + m.katsayilar["egitim"])
+    with pytest.raises(ek.EkonometriHatasi, match="temel düzey"):
+        s("lincom 2.b2")  # Batı Anadolu temel düzey
+
+
+def test_stata_kirilma_nedensellik(s):
+    s("sysuse ihracat")
+    s("gen li = ln(ihracat)")
+    s("gen lk = ln(reel_kur)")
+    z = s("zandrews li, break(both) lags(1)")
+    dogrudan = ek.zivot_andrews(s.veri.set_index("donem")["li"], "ikisi", 1)
+    assert np.isclose(z.istatistik, dogrudan.istatistik) and z.kirilma == dogrudan.kirilma
+    s("zandrews li, lagmethod(ttest) maxlags(4) graph")
+    assert s._son_sekil is not None
+    t = s("todayamamoto li lk, dmax(1) lags(2)")
+    assert np.allclose(t.tablo["χ²"], ek.toda_yamamoto(s.veri, ["li", "lk"], gecikme=2, dmax=1).tablo["χ²"])
+
+
+def test_stata_kesit_cips(s):
+    s("sysuse firma")
+    s("xtset firma yil")
+    s("gen ls = ln(satis)")
+    s("gen lk = ln(sermaye)")
+    cd = s("xtcd ls lk")
+    assert len(cd) == 2 and all(r.bagimlilik_var for r in cd)
+    s("xtreg ls lk, fe")
+    assert "Yanlılığı düzeltilmiş ölçekli LM" in s("xtcsd, pesaran").tablo.index
+    with pytest.warns(UserWarning):
+        c = s("pescadf ls, lags(0) trend")
+    assert c.deterministik == "trend" and c.gecikme == 0
+    with pytest.raises(ek.EkonometriHatasi, match="lags"):
+        s("pescadf ls")

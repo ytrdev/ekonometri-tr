@@ -210,7 +210,7 @@ s("rapor bulgular.docx")            # + Türkçe tez raporu
 s.do("analiz.do")                   # hazır do dosyası
 ```
 
-- **Tahmin ve test komutları:** `regress`, `newey`, `prais`, `logit`, `probit`, `ologit`, `oprobit`, `mlogit`, `poisson`, `nbreg`, `tobit`, `xtreg fe/re`, `xtabond`, `ivregress 2sls`, `dfuller`, `xtunitroot`, `var`, `varsoc`, `ardl`, `vecrank`, `margins` (`at()`), `estat …`, `hausman`, `xttest0`, `test`, `ttest`, `oneway`, `tabulate, chi2`, `predict`, `esttab using`.
+- **Tahmin ve test komutları:** `regress`, `newey`, `prais`, `logit`, `probit`, `ologit`, `oprobit`, `mlogit`, `poisson`, `nbreg`, `tobit`, `xtreg fe/re`, `xtabond`, `ivregress 2sls`, `dfuller`, `zandrews`, `xtunitroot`, `pescadf`, `xtcd`, `xtcsd`, `var`, `varsoc`, `ardl`, `vecrank`, `margins` (`at()`), `lincom`, `estat …`, `hausman`, `xttest0`, `test`, `ttest`, `oneway`, `tabulate, chi2`, `predict`, `esttab using`.
 - **Grafikler:** `rvfplot`, `qnorm`, `histogram`, `scatter`, `twoway (scatter)(lfit)`, `tsline`, `coefplot`, `marginsplot`, `lroc`, `irf graph`, `graph export`.
 - **Veri düzenleme:** `gen`, `replace`, `egen`, `merge`, `append`, `reshape`, `collapse`, `encode`, `destring`, `label define/values`, `recode`, `duplicates` ve diğerleri.
 - **Ağırlıklar:** `[aw=]`, `[fw=]`, `[pw=]`.
@@ -235,10 +235,11 @@ Her model için aynı üç adım: **tahmin et → Türkçe yorumla → tez rapor
 | **Tablolar** | `ek.karsilastir()` · `ek.korelasyon()` · `ek.tanimlayici()` | Model 1–2–3 yan yana karşılaştırma tablosu · Word / LaTeX (booktabs) / Excel / CSV dışa aktarma (`esttab using`) · Pearson/Spearman korelasyon matrisi (yıldızlı) · tanımlayıcı istatistikler |
 | **İkili seçim** | `ek.logit()` · `ek.probit()` | En çok olabilirlik · ortalama marjinal etkiler (delta yöntemi) · odds oranları · sınıflandırma tablosu · ROC/AUC · Hosmer-Lemeshow · McFadden R² |
 | **Sıralı, çok terimli, sayım, sansürlü** | `ek.ologit()` · `ek.oprobit()` · `ek.mlogit()` · `ek.poisson()` · `ek.nbreg()` · `ek.tobit()` | Stata ile aynı kesim noktası tanımı ve temel kategori kuralı · göreli risk / olay oranları · sonuç başına marjinal etkiler · aşırı yayılım LR testi · alt/üst sansür |
+| **Doğrusal birleşim** | `ek.lincom()` | Stata `lincom`: katsayıların doğrusal birleşimi (ör. `x1 - x2`, `_cons + kukla`), standart hata, t/z testi ve güven aralığı; tüm modellerde |
 | **Marjlar** | `ek.marjlar()` | Stata `margins`: `at()` ile koşullu tahmin, grup marjları, koşullu marjinal etki `dydx() at()`, delta yöntemi |
 | **Grafikler** | `ek.kalinti_grafigi()` · `ek.katsayi_grafigi()` · `ek.marjinal_grafik()` · `ek.zaman_grafigi()` · `ek.histogram()` · `ek.serpme()` · `ek.roc_grafigi()` | rvfplot, qnorm, coefplot, marginsplot, tsline, histogram, scatter + lfit, lroc · Türkçe, ondalık virgül, 300 dpi · rapora numaralı **Şekil** olarak eklenir |
-| **Zaman serisi** | `ek.adf()` · `ek.kpss()` · `ek.duraganlik()` · `ek.engle_granger()` · `ek.hata_duzeltme()` · `ek.granger()` · `ek.var_granger()` · `ek.ardl_sinir()` · `ek.johansen()` | Birim kök testleri (MacKinnon p-değerleri) · düzey + birinci fark tez tablosu, I(0)/I(1) kararı · Engle-Granger ve Johansen eşbütünleşme · hata düzeltme modeli · Granger nedensellik · VAR (`ek.var`: gecikme seçimi, kararlılık, etki-tepki) · VAR içinde blok dışsallık · ARDL sınır testi |
-| **Panel veri** | `ek.panel()` · `ek.panel_analizi()` · `ek.hausman()` · `ek.xtabond()` · `ek.panel_birim_kok()` | Havuzlanmış EKK · sabit etkiler (tek / iki yönlü) · rassal etkiler (Swamy-Arora) · F, Breusch-Pagan LM ve Hausman testleriyle model seçimi · kümelenmiş standart hata · Arellano-Bond fark GMM (AR(1)/AR(2), Sargan) · panel birim kök: LLC, IPS, Fisher-ADF |
+| **Zaman serisi** | `ek.adf()` · `ek.kpss()` · `ek.duraganlik()` · `ek.engle_granger()` · `ek.hata_duzeltme()` · `ek.granger()` · `ek.var_granger()` · `ek.ardl_sinir()` · `ek.johansen()` · `ek.toda_yamamoto()` · `ek.zivot_andrews()` | Birim kök testleri (MacKinnon p-değerleri) · Zivot-Andrews yapısal kırılmalı birim kök (kırılma tarihi + grafik) · düzey + birinci fark tez tablosu, I(0)/I(1) kararı · Engle-Granger ve Johansen eşbütünleşme · hata düzeltme modeli · Granger nedensellik · VAR (`ek.var`: gecikme seçimi, kararlılık, etki-tepki) · VAR içinde blok dışsallık · Toda-Yamamoto nedensellik (I(1) / eşbütünleşik serilerde) · ARDL sınır testi · VAR tez raporu ve Türkçe yorum |
+| **Panel veri** | `ek.panel()` · `ek.panel_analizi()` · `ek.hausman()` · `ek.xtabond()` · `ek.panel_birim_kok()` · `ek.yatay_kesit_bagimliligi()` · `ek.cips()` | Havuzlanmış EKK · sabit etkiler (tek / iki yönlü) · rassal etkiler (Swamy-Arora) · F, Breusch-Pagan LM ve Hausman testleriyle model seçimi · kümelenmiş standart hata · Arellano-Bond fark GMM (AR(1)/AR(2), Sargan) · panel birim kök: LLC, IPS, Fisher-ADF · yatay kesit bağımlılığı: Pesaran CD, Breusch-Pagan LM, ölçekli LM · ikinci nesil birim kök: CIPS (Pesaran, 2007) · hepsi için tez tablosu |
 | **Araç değişken** | `ek.iv2sls()` | 2SLS · birinci aşama F ve kısmi R² (zayıf araç) · Wu-Hausman içsellik · Sargan aşırı tanımlama |
 | **Türkçe yorum** | `model.yorumla()` | düz/log/esneklik, kukla + referans grup, kare terim + dönüm noktası, etkileşim, olasılık (yüzde puan) |
 | **Bulgu raporu** | `.rapor("x.docx")` | Yöntem + Bulgular metni, tez tabloları (`bicim="apa"` veya `"izgara"`), kaynakça · `dil="en"` ile İngilizce metin (EKK, panel, logit/probit, 2SLS, zaman serisi, karşılaştırma) · Word / Markdown / HTML |
@@ -266,10 +267,12 @@ Doğrusal modeller, panel, 2SLS ve testler matris cebiriyle sıfırdan yazıldı
 | Sıralı / çok terimli logit, poisson, nbreg, tobit | R `MASS`, `nnet`, `AER` | katsayılar, kesim noktaları, standart hatalar, α, σ, log-olabilirlik |
 | Marjlar, ROC | R `marginaleffects`, `pROC` | tahmin marjları, koşullu etkiler, AUC |
 | VAR, Arellano-Bond, panel birim kök | statsmodels, R `plm` | VAR katsayıları ve bilgi ölçütleri · xtabond katsayı, sağlam SH, AR(1)/AR(2) · LLC, IPS, Fisher |
+| Toda-Yamamoto, Zivot-Andrews, lincom | R `car`, `urca` | Wald χ² · ZA istatistiği ve kırılma tarihi (tüm aday tarihlerde) · doğrusal birleşim ve SH |
+| Yatay kesit bağımlılığı, CIPS | R `plm` (`pcdtest`, `cipstest`) | LM, ölçekli LM, CD (dengeli / dengesiz), yanlılığı düzeltilmiş LM · CADF / CIPS (kesik ve kesiksiz) |
 
 Göreli farklar genellikle 10⁻⁸'den küçüktür. Testler her değişiklikte GitHub Actions'ta Python 3.10–3.13 üzerinde otomatik çalışır.
 
-**Bağımsız yazılımlarla doğrulama:** Sonuçlar ayrıca kodumuzdan tamamen bağımsız ücretsiz yazılımlarla, yani R (`estimatr`, `plm`, `AER`, `sandwich`, `lmtest`, `urca`, `MASS`, `nnet`, `pROC`), gretl ve pyfixest ile karşılaştırıldı. Stata kuralları için bu paketlerin "Stata ile aynı" seçenekleri kullanıldı. 22 karşılaştırma grubunun tamamı tutuyor (çoğunda göreli fark 10⁻¹⁰'dan küçük, iteratif tahminlerde 10⁻⁶'nın altında): [dogrulama/SONUC.md](dogrulama/SONUC.md). Kendin tekrarlamak için: `python dogrulama/karsilastir.py`.
+**Bağımsız yazılımlarla doğrulama:** Sonuçlar ayrıca kodumuzdan tamamen bağımsız ücretsiz yazılımlarla, yani R (`estimatr`, `plm`, `AER`, `sandwich`, `lmtest`, `urca`, `MASS`, `nnet`, `pROC`, `car`), gretl ve pyfixest ile karşılaştırıldı. Stata kuralları için bu paketlerin "Stata ile aynı" seçenekleri kullanıldı. 27 karşılaştırma grubunun tamamı tutuyor (çoğunda göreli fark 10⁻¹⁰'dan küçük, iteratif tahminlerde 10⁻⁶'nın altında): [dogrulama/SONUC.md](dogrulama/SONUC.md). Kendin tekrarlamak için: `python dogrulama/karsilastir.py`.
 
 **Stata kuralları:** Standart hata çarpanları, serbestlik dereceleri, z/t seçimi, `summarize, detail` yüzdelikleri ve `xtreg` R² tanımları Stata'nın belgelenmiş varsayılanlarına göre uygulanır. Ayrıntılar ve bilinen küçük farklar (ör. `dfuller` kritik değer tablosu) için [REHBER.md](REHBER.md) dosyasına bak. Stata'nın kendisiyle doğrudan karşılaştırma yapılmadı; farklılık görürsen lütfen bildir.
 
@@ -308,6 +311,7 @@ Tüm veri setleri **simüle edilmiştir** — gerçek kişi, konut ya da ülke v
 - [x] **v0.6** — Hata düzeltme modeli (Engle-Granger), Granger nedensellik
 - [x] **v0.7** — ARDL sınır testi, VAR içinde Granger, Johansen, Arellano-Bond, tez tablo biçimleri, İngilizce rapor
 - [x] **v0.8** — Grafikler (Word'e şekil), `margins at()`, esttab → Word / LaTeX / Excel, ROC ve Hosmer-Lemeshow, ologit / oprobit / mlogit, poisson / nbreg, tobit, VAR (varsoc, varstable, irf), panel birim kök (LLC, IPS, Fisher), belge sitesi
+- [ ] **Sonraki sürüm** — Toda-Yamamoto, Zivot-Andrews, Pesaran CD ve CIPS, `lincom`, VAR ve panel birim kök raporları
 - [ ] **v1.0** — PyPI'da yayın
 
 ## Katkıda bulun

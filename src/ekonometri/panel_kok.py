@@ -32,7 +32,7 @@ import pandas as pd
 from scipy import stats
 
 from ._panel_tablolar import IPS, IPS_T, LLC, LLC_T
-from ._yardimci import p_cumle, p_yaz, sayi
+from ._yardimci import DIL, l, p_cumle, p_yaz, sayi
 from .regresyon import EkonometriHatasi
 
 _DET = {"yok": "n", "sabit": "c", "trend": "ct"}
@@ -81,6 +81,21 @@ class PanelBirimKokSonucu:
             f"({ad} = {sayi(deger, 3)}, {p_cumle(p)}); seri düzeyde durağan değildir, farkı alınarak yeniden test edilmelidir."
         )
 
+    def yorumla(self):
+        from .yorum import Yorum
+
+        y = Yorum(f"{_TEST_AD[self.test]} panel birim kök testinin yorumu — {self.degisken}")
+        y.model_satirlari.append(self.yorum())
+        if self.test == "llc":
+            y.notlar.append("LLC tüm birimlerde ortak otoregresif katsayı varsayar; heterojen panelde IPS / Fisher ile birlikte raporla.")
+        y.notlar.append(
+            "Birinci nesil testler birimler arası bağımsızlık varsayar; ek.yatay_kesit_bagimliligi() ile bağımlılık bulunursa ek.cips() kullan."
+        )
+        return y
+
+    def rapor(self, dosya=None, baslik=None, etiketler=None, tablo_no: int = 1, dil: str = "tr", bicim: str = "apa"):
+        return panel_birim_kok_raporu([self], dosya, baslik, etiketler, tablo_no, dil, bicim)
+
     def __str__(self) -> str:
         det = {"yok": "yok", "sabit": "sabit", "trend": "sabit + trend"}[self.deterministik]
         g = self.gecikmeler
@@ -107,6 +122,88 @@ class PanelBirimKokSonucu:
         return "\n".join(satir)
 
     __repr__ = __str__
+
+
+_TEST_EN = {"llc": "Levin-Lin-Chu (LLC)", "ips": "Im-Pesaran-Shin (IPS)", "fisher": "Fisher-ADF (Maddala-Wu / Choi)"}
+_KAYNAK = {"llc": ["llc"], "ips": ["ips"], "fisher": ["maddala_wu", "choi"]}
+
+
+def panel_birim_kok_raporu(sonuclar, dosya=None, baslik=None, etiketler=None, tablo_no: int = 1, dil: str = "tr", bicim: str = "apa"):
+    """Birden çok değişken / test için tek panel birim kök tablosu ve metni (düzey ve fark sonuçları birlikte verilebilir)."""
+    from .rapor import KAYNAKLAR, Tablo, _Adlar, _p_hucre, rapor_ayari, test_raporu
+
+    sonuclar = list(sonuclar)
+    if not sonuclar:
+        raise EkonometriHatasi("En az bir panel birim kök sonucu ver.")
+    token = rapor_ayari(dil, bicim)
+    try:
+        en = dil == "en"
+        ad = _Adlar(etiketler)
+        testler = list(dict.fromkeys(s.test for s in sonuclar))
+        adlar = ", ".join((_TEST_EN if en else _TEST_AD)[t] for t in testler)
+        if en:
+            p = [
+                f"Stationarity of the panel series was examined with the {adlar} test(s). The null hypothesis is that all units contain a "
+                "unit root; the alternative is that all units (LLC) or some units (IPS, Fisher) are stationary."
+            ]
+        else:
+            p = [
+                f"Panel serilerin durağanlığı {adlar} test(ler)iyle incelenmiştir. Temel hipotez tüm birimlerde birim kök bulunduğu; "
+                "alternatif hipotez tüm birimlerin (LLC) ya da birimlerin bir kısmının (IPS, Fisher) durağan olduğudur."
+            ]
+        for s_ in sonuclar:
+            isim, deger, pv = s_.ana_istatistik
+            if en:
+                p.append(
+                    f"For {ad.metin(s_.degisken)} the {_TEST_EN[s_.test]} statistic is {sayi(deger, 3)} ({p_cumle(pv)}); the unit-root null is "
+                    + ("rejected at the 5% level." if pv < 0.05 else "not rejected at the 5% level.")
+                )
+            else:
+                p.append(
+                    f"{ad.metin(s_.degisken)} için {_TEST_AD[s_.test]} istatistiği {sayi(deger, 3)} ({p_cumle(pv)}) olup birim kök boş hipotezi "
+                    + ("%5 düzeyinde reddedilmektedir." if pv < 0.05 else "%5 düzeyinde reddedilememektedir.")
+                )
+        det_ad = {"yok": l("yok", "none"), "sabit": l("sabit", "constant"), "trend": l("sabit + trend", "constant + trend")}
+        satirlar = []
+        for s_ in sonuclar:
+            isim, deger, pv = s_.ana_istatistik
+            g = s_.gecikmeler
+            gec = str(int(g.iloc[0])) if g.nunique() == 1 else sayi(float(g.mean()), 2)
+            satirlar.append(
+                [
+                    ad.yalin(s_.degisken),
+                    (_TEST_EN if en else _TEST_AD)[s_.test].split(" (")[0] if s_.test != "fisher" else "Fisher-ADF",
+                    det_ad[s_.deterministik],
+                    gec,
+                    f"{sayi(deger, 3)} ({isim if not en else {'Düzeltilmiş t*': 'Adjusted t*', 'W-t-bar': 'W-t-bar', 'Pm': 'Pm'}[isim]})",
+                    _p_hucre(pv),
+                    l("Reddedildi", "Rejected") if pv < 0.05 else l("Reddedilemedi", "Not rejected"),
+                ]
+            )
+        t = Tablo(
+            tablo_no,
+            l("Panel birim kök testi sonuçları", "Panel unit root test results"),
+            [
+                l("Değişken", "Variable"),
+                "Test",
+                l("Deterministik", "Deterministics"),
+                l("Gecikme", "Lags"),
+                l("İstatistik", "Statistic"),
+                "p",
+                l("H₀ kararı", "Decision on H₀"),
+            ],
+            satirlar,
+            l(
+                "H₀: Tüm birimlerde birim kök vardır. LLC: düzeltilmiş t* (Levin vd., 2002); IPS: W-t-bar (Im vd., 2003); Fisher: Choi (2001) Pm "
+                "istatistiği, birim ADF p-değerleri MacKinnon yaklaşımıyla. Gecikme birden fazlaysa birimler arası ortalama verilmiştir.",
+                "H₀: all units contain a unit root. LLC: adjusted t* (Levin et al., 2002); IPS: W-t-bar (Im et al., 2003); Fisher: Choi (2001) Pm "
+                "statistic using MacKinnon p-values of the unit ADF tests. Where lags differ across units the average is shown.",
+            ),
+        )
+        kaynak = [KAYNAKLAR[k] for t_ in testler for k in _KAYNAK[t_]]
+        return test_raporu(baslik or l("Panel Birim Kök Testleri", "Panel unit root tests"), p, t, kaynak, dosya, dil, bicim)
+    finally:
+        DIL.reset(token)
 
 
 # --------------------------------------------------------------------------- yardımcılar
@@ -378,4 +475,4 @@ def panel_duraganlik(
     return pd.DataFrame(satirlar)
 
 
-__all__ = ["panel_birim_kok", "panel_duraganlik", "PanelBirimKokSonucu"]
+__all__ = ["panel_birim_kok", "panel_duraganlik", "panel_birim_kok_raporu", "PanelBirimKokSonucu"]

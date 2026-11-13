@@ -2,7 +2,7 @@
 # Çalıştırma: Rscript dogrulama/r_hesapla.R <veri_dizini>   (dogrulama/karsilastir.py tarafından çağrılır)
 suppressPackageStartupMessages({
   library(estimatr); library(sandwich); library(lmtest); library(plm); library(AER); library(urca); library(tseries)
-  library(MASS); library(nnet); library(pROC)
+  library(MASS); library(nnet); library(pROC); library(car)
 })
 args <- commandArgs(trailingOnly = TRUE); d <- args[1]
 out <- c()
@@ -97,7 +97,8 @@ yaz("mlogit_b", as.vector(t(coef(ml)))); yaz("mlogit_se", as.vector(t(sqrt(matri
 yaz("mlogit_ll", logLik(ml))
 po <- glm(kardes ~ egitim + tecrube, data = getiri, family = poisson, control = glm.control(epsilon = 1e-14, maxit = 100))
 yaz("poisson_b", coef(po)); yaz("poisson_se", sqrt(diag(vcov(po)))); yaz("poisson_ll", logLik(po))
-nb <- glm.nb(kardes ~ egitim + tecrube, data = getiri, control = glm.control(epsilon = 1e-14, maxit = 100))
+# nbreg: aşırı yayılımlı sayım (firma çalışan sayısı). getiri$kardes'te varyans < ortalama, α sınırda: glm.nb orada bozulur.
+nb <- glm.nb(calisan ~ log(sermaye) + arge, data = firma, control = glm.control(epsilon = 1e-14, maxit = 100))
 yaz("nbreg_b", coef(nb)); yaz("nbreg_alfa", 1 / nb$theta); yaz("nbreg_ll", logLik(nb))
 sinav$kesik <- pmax(sinav$puan - 70, 0)
 tb <- tobit(kesik ~ calisma_saati + uyku, left = 0, data = sinav)
@@ -112,6 +113,27 @@ suppressWarnings({
   yaz("ips_sabit_L1", purtest(p$ls, test = "ips", exo = "intercept", lags = 1, dfcor = TRUE)$statistic$statistic)
   yaz("fisher_Pm_L0", purtest(p$ls, test = "Pm", exo = "intercept", lags = 0, dfcor = TRUE, p.approx = "MacKinnon1994")$statistic$statistic)
   yaz("fisher_Z_L0", purtest(p$ls, test = "invnormal", exo = "intercept", lags = 0, dfcor = TRUE, p.approx = "MacKinnon1994")$statistic$statistic)
+})
+
+# 12) Toda-Yamamoto (lm + car::linearHypothesis, Wald χ²), Zivot-Andrews (urca), lincom
+li <- log(ihr$ihracat); lk <- log(ihr$reel_kur); p_ <- 2; k_ <- 3; Tn <- length(li)
+dd <- data.frame(li = li[(k_ + 1):Tn], lk = lk[(k_ + 1):Tn])
+for (j in 1:k_) { dd[[paste0("li_L", j)]] <- li[(k_ + 1 - j):(Tn - j)]; dd[[paste0("lk_L", j)]] <- lk[(k_ + 1 - j):(Tn - j)] }
+rhs <- paste(paste0(rep(c("li", "lk"), k_), "_L", rep(1:k_, each = 2)), collapse = "+")
+yaz("ty_lk_li", linearHypothesis(lm(as.formula(paste("li ~", rhs)), dd), paste0("lk_L", 1:p_), test = "Chisq")$Chisq[2])
+yaz("ty_li_lk", linearHypothesis(lm(as.formula(paste("lk ~", rhs)), dd), paste0("li_L", 1:p_), test = "Chisq")$Chisq[2])
+for (m in c("intercept", "trend", "both")) { z <- ur.za(li, model = m, lag = 2); yaz(paste0("za_", m), z@teststat); yaz(paste0("za_tb_", m), z@bpoint) }
+mo <- lm(f, data = ucret); b <- coef(mo); V <- vcov(mo); cc <- setNames(rep(0, length(b)), names(b)); cc["egitim"] <- 1; cc["tecrube"] <- -1
+yaz("lincom_tahmin", sum(cc * b)); yaz("lincom_sh", sqrt(drop(t(cc) %*% V %*% cc)))
+
+# 13) yatay kesit bağımlılığı ve CIPS (plm)
+suppressWarnings({
+  yaz("cd_ls", setNames(sapply(c("lm", "sclm", "cd"), function(t) unname(pcdtest(p$ls, test = t)$statistic)), c("lm", "sclm", "cd")))
+  # plm'in p-değeri tablosu T < 10'da (firma: etkin T = 8) ara değerlemede hata veriyor; istatistik yine plm'de hesaplanır,
+  # yalnızca p-değeri arama adımı devre dışı bırakılır.
+  assignInNamespace("critvals.cips", function(...) 0.05, ns = "plm")
+  yaz("cips_ls", cipstest(p$ls, lags = 1, type = "drift", model = "cmg")$statistic)
+  yaz("cips_ls_trend", cipstest(p$ls, lags = 1, type = "trend", model = "cmg", truncated = TRUE)$statistic)
 })
 
 for (k in names(out)) cat(k, "=", format(out[[k]], digits = 17), "\n", sep = "")
