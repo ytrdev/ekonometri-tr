@@ -796,11 +796,15 @@ def nbreg(formul: str, veri: pd.DataFrame, kovaryans: str = "klasik", kume: str 
         r = mod.fit(start_params=r0.params, method="newton", disp=False, maxiter=200)
     params = r.params.copy()  # β, α
     llf = float(r.llf)
-    if not np.all(np.isfinite(params)) or not np.isfinite(llf) or params[-1] <= 0:
-        # α sınıra (0'a) gidiyor: aşırı yayılım yok. ln α ile sınırlı optimizasyon (Stata da α ≈ 0 raporlar)
+    pois = poisson(formul, veri, maruziyet=maruziyet)
+    # NB, Poisson'u kapsar: geçerli bir en çok olabilirlik çözümü Poisson'un log-olabilirliğinden küçük olamaz. Optimizasyon
+    # α sınırına (0) gidip NaN verirse ya da (sürüm / başlangıç değerine bağlı olarak) yanlış bir noktada durursa
+    # ln α ile sınırlı, Poisson'dan başlayan yedek optimizasyon yapılır.
+    gecerli = np.all(np.isfinite(params)) and np.isfinite(llf) and params[-1] > 0 and llf >= pois.log_olabilirlik - 1e-8
+    if not gecerli:
         from scipy.optimize import minimize
 
-        b0 = poisson(formul, veri, maruziyet=maruziyet)._parametreler
+        b0 = pois._parametreler
 
         def eksi_ll(th):
             return -mod.loglike(np.r_[th[:-1], np.exp(th[-1])])
@@ -818,12 +822,17 @@ def nbreg(formul: str, veri: pd.DataFrame, kovaryans: str = "klasik", kume: str 
                 en_iyi = sonuc
         params = np.r_[en_iyi.x[:-1], np.exp(en_iyi.x[-1])]
         llf = float(mod.loglike(params))
-    pois = poisson(formul, veri, maruziyet=maruziyet)
-    sinirda = params[-1] < 1e-6
+        if params[-1] >= 1e-6:  # iç çözüm: Newton ile son yakınsama (standart hatalar için tam Hessian)
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore")
+                r2 = mod.fit(start_params=params, method="newton", disp=False, maxiter=200)
+            if np.all(np.isfinite(r2.params)) and r2.params[-1] > 0 and np.isfinite(r2.llf) and r2.llf >= llf:
+                params, llf = r2.params.copy(), float(r2.llf)
+    sinirda = params[-1] < 1e-6 or llf < pois.log_olabilirlik
     if sinirda:
         # α ≈ 0: aşırı yayılım yok, model Poisson'a indirgenir. Çok küçük α'da NB olabilirliği sayısal olarak güvenilmez
         # olduğundan β ve log-olabilirlik Poisson limitinden alınır (LR = 0, p = 1; Stata da bu durumda χ̄² = 0 raporlar).
-        params = np.r_[pois._parametreler, max(float(params[-1]), 1e-8)]
+        params = np.r_[pois._parametreler, 1e-8]  # α ≈ 0 (ortamdan bağımsız sabit sınır değeri)
         llf = pois.log_olabilirlik
     alfa = params[-1]
     H_inv = np.linalg.inv(-mod.hessian(params))
