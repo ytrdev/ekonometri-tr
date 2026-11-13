@@ -1,0 +1,18 @@
+# Prais-Winsten ve Cochrane-Orcutt: gretl ile bağımsız hesap (dogrulama/karsilastir.py çağırır)
+# Kullanım: gretlcli -b dogrulama/gretl_prais.inp  (ihracat.csv aynı dizinde olmalı)
+open ihracat.csv --quiet
+setobs 4 2005:1 --time-series
+series ly = log(ihracat)
+series lk = log(reel_kur)
+ar1 ly const lk dunya_buyumesi --pwe --quiet
+matrix b = $coeff
+matrix s = $stderr
+printf "pw_b=%.15g,%.15g,%.15g\n", b[1], b[2], b[3]
+printf "pw_se=%.15g,%.15g,%.15g\n", s[1], s[2], s[3]
+printf "pw_rho=%.15g\n", $rho
+ar1 ly const lk dunya_buyumesi --quiet
+matrix b = $coeff
+matrix s = $stderr
+printf "co_b=%.15g,%.15g,%.15g\n", b[1], b[2], b[3]
+printf "co_se=%.15g,%.15g,%.15g\n", s[1], s[2], s[3]
+printf "co_rho=%.15g\n", $rho

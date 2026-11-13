@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "Bu yazılımı akademik bir çalışmada kullandıysan lütfen aşağıdaki bilgilerle atıf ver."
+title: "ekonometri-tr: Türkçe açık kaynak ekonometri kütüphanesi"
+type: software
+authors:
+  - alias: ytrdev
+version: 0.8.0
+date-released: 2026-11-13
+license: MIT
+repository-code: "https://github.com/ytrdev/ekonometri-tr"
+keywords:
+  - ekonometri
+  - econometrics
+  - regresyon
+  - eğitim
+  - Python

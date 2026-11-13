@@ -1,0 +1,1501 @@
+ucret,egitim,tecrube,yas,cinsiyet,bolge,sektor
+20810,8,5,18,Erkek,Doğu Anadolu,Özel
+81520,14,9,28,Erkek,Batı Anadolu,Özel
+154480,12,31,51,Erkek,Batı Anadolu,Özel
+42340,12,26,45,Erkek,Karadeniz,Kamu
+53260,12,27,44,Erkek,Orta Anadolu,Özel
+74810,16,18,39,Erkek,İstanbul,Özel
+53700,16,15,36,Kadın,Akdeniz,Özel
+54030,8,42,56,Erkek,Orta Anadolu,Özel
+144010,14,27,45,Erkek,Doğu Anadolu,Özel
+112710,11,37,56,Erkek,Akdeniz,Özel
+56830,18,14,39,Erkek,Batı Anadolu,Kamu
+57380,16,0,21,Erkek,Ege,Özel
+73130,14,27,45,Erkek,Batı Anadolu,Özel
+195830,16,31,55,Erkek,İstanbul,Özel
+137380,12,31,49,Erkek,Batı Anadolu,Özel
+54060,16,3,25,Erkek,Batı Anadolu,Özel
+30980,12,31,50,Erkek,Orta Anadolu,Özel
+71900,12,29,48,Kadın,Karadeniz,Özel
+31040,11,3,20,Kadın,Doğu Anadolu,Özel
+49210,8,5,21,Erkek,Batı Anadolu,Özel
+87900,12,30,48,Erkek,Ege,Özel
+51810,12,1,21,Erkek,İstanbul,Özel
+47770,14,43,62,Erkek,Doğu Anadolu,Özel
+18220,5,49,62,Kadın,Orta Anadolu,Özel
+70750,12,11,31,Erkek,Karadeniz,Özel
+36070,12,41,58,Kadın,Doğu Anadolu,Kamu
+43940,8,14,27,Erkek,Ege,Özel
+48300,12,23,39,Kadın,Akdeniz,Özel
+29110,12,4,23,Kadın,Ege,Özel
+17670,11,9,27,Kadın,Doğu Anadolu,Özel
+51240,8,36,51,Kadın,Orta Anadolu,Özel
+164590,16,6,28,Kadın,İstanbul,Kamu
+32020,16,8,28,Erkek,Akdeniz,Özel
+142200,14,13,31,Erkek,İstanbul,Özel
+19660,12,12,28,Kadın,Batı Anadolu,Özel
+125350,18,9,34,Kadın,Karadeniz,Kamu
+48690,12,22,38,Kadın,Orta Anadolu,Kamu
+45690,12,4,21,Erkek,Doğu Anadolu,Kamu
+74220,16,41,61,Kadın,İstanbul,Özel
+137750,12,16,33,Kadın,Doğu Anadolu,Özel
+67190,14,19,38,Kadın,Ege,Kamu
+19050,12,2,20,Kadın,Batı Anadolu,Kamu
+55630,11,25,40,Kadın,Doğu Anadolu,Özel
+121170,16,0,20,Kadın,İstanbul,Özel
+36440,8,18,31,Erkek,İstanbul,Özel
+121140,12,38,58,Erkek,Batı Anadolu,Kamu
+17520,12,4,23,Erkek,Karadeniz,Özel
+78540,8,33,49,Erkek,Orta Anadolu,Özel
+48960,16,33,53,Kadın,Karadeniz,Kamu
+90240,12,37,53,Erkek,Orta Anadolu,Özel
+58820,14,0,22,Erkek,Doğu Anadolu,Özel
+86010,12,32,50,Kadın,Doğu Anadolu,Özel
+113750,12,45,63,Erkek,Akdeniz,Kamu
+70550,12,13,32,Kadın,Karadeniz,Kamu
+41530,12,38,56,Erkek,Karadeniz,Özel
+79300,14,31,49,Erkek,İstanbul,Kamu
+50530,12,39,59,Erkek,Orta Anadolu,Kamu
+62990,12,43,59,Kadın,Ege,Özel
+34350,5,17,28,Erkek,İstanbul,Kamu
+66760,16,41,61,Kadın,Ege,Özel
+91440,12,24,40,Kadın,İstanbul,Özel
+125450,12,17,37,Erkek,Ege,Özel
+37280,12,0,18,Kadın,İstanbul,Özel
+42170,8,45,59,Erkek,Karadeniz,Özel
+70560,16,0,19,Erkek,İstanbul,Kamu
+137520,20,29,53,Kadın,Batı Anadolu,Özel
+33080,5,50,62,Erkek,Doğu Anadolu,Özel
+64410,12,10,28,Erkek,Ege,Kamu
+76610,16,0,19,Kadın,Batı Anadolu,Kamu
+85980,12,27,44,Erkek,İstanbul,Kamu
+29410,12,39,59,Erkek,Akdeniz,Özel
+59090,12,15,31,Erkek,Karadeniz,Kamu
+159180,16,30,50,Erkek,İstanbul,Özel
+46840,18,4,27,Erkek,Doğu Anadolu,Özel
+133020,16,11,33,Kadın,İstanbul,Kamu
+51050,14,20,41,Erkek,Akdeniz,Kamu
+50810,8,24,40,Erkek,İstanbul,Özel
+98120,18,24,47,Erkek,Orta Anadolu,Özel
+15010,5,10,22,Erkek,Karadeniz,Özel
+32060,11,4,19,Erkek,Batı Anadolu,Özel
+30450,11,14,31,Erkek,Orta Anadolu,Özel
+54880,14,12,32,Erkek,Orta Anadolu,Özel
+61700,12,33,52,Kadın,Doğu Anadolu,Özel
+22930,8,21,36,Erkek,Akdeniz,Özel
+26860,5,45,54,Erkek,Ege,Özel
+83020,14,9,28,Erkek,İstanbul,Özel
+63270,12,0,18,Kadın,İstanbul,Özel
+135490,14,30,51,Kadın,İstanbul,Özel
+71000,12,22,41,Erkek,İstanbul,Özel
+53680,16,5,28,Kadın,Akdeniz,Özel
+121840,16,27,48,Kadın,Karadeniz,Kamu
+54330,8,30,45,Erkek,Karadeniz,Özel
+190950,18,12,36,Erkek,Batı Anadolu,Özel
+53110,16,36,56,Erkek,Ege,Özel
+88660,14,39,60,Erkek,Karadeniz,Özel
+110650,14,42,61,Erkek,İstanbul,Özel
+87670,12,14,33,Erkek,Ege,Özel
+23470,16,6,26,Erkek,Ege,Özel
+41270,8,21,36,Erkek,Doğu Anadolu,Özel
+68540,12,8,28,Erkek,Orta Anadolu,Özel
+129110,16,18,40,Erkek,Karadeniz,Özel
+44180,8,14,30,Kadın,Doğu Anadolu,Özel
+27160,14,41,61,Kadın,Batı Anadolu,Özel
+54380,12,18,34,Erkek,İstanbul,Özel
+94900,16,18,41,Kadın,Karadeniz,Özel
+29390,5,20,31,Erkek,Akdeniz,Özel
+29900,14,7,28,Erkek,Orta Anadolu,Özel
+67640,16,31,51,Erkek,Batı Anadolu,Özel
+59430,14,15,35,Erkek,Karadeniz,Özel
+72790,12,21,40,Erkek,Karadeniz,Özel
+63710,14,37,58,Kadın,Orta Anadolu,Kamu
+31120,12,1,20,Erkek,Ege,Özel
+75420,14,5,25,Kadın,Batı Anadolu,Özel
+23340,8,14,27,Kadın,Karadeniz,Özel
+90790,11,11,26,Kadın,İstanbul,Özel
+28700,5,17,29,Erkek,Akdeniz,Özel
+44320,8,4,19,Erkek,Ege,Özel
+63120,12,35,54,Kadın,İstanbul,Kamu
+130010,8,34,48,Kadın,İstanbul,Kamu
+79850,12,6,24,Erkek,Orta Anadolu,Kamu
+132310,14,33,55,Erkek,Karadeniz,Kamu
+29420,16,1,22,Kadın,Akdeniz,Özel
+47370,12,9,27,Erkek,Karadeniz,Özel
+74230,12,29,47,Erkek,İstanbul,Özel
+45980,12,35,55,Kadın,İstanbul,Kamu
+58150,8,7,21,Erkek,İstanbul,Özel
+121660,14,0,18,Erkek,İstanbul,Kamu
+62030,16,29,51,Kadın,Ege,Özel
+45680,12,38,57,Kadın,Batı Anadolu,Özel
+74200,12,10,26,Erkek,Doğu Anadolu,Özel
+152650,18,26,49,Kadın,İstanbul,Özel
+115010,14,29,47,Erkek,İstanbul,Özel
+48160,16,0,20,Kadın,Karadeniz,Özel
+65940,16,12,34,Erkek,İstanbul,Kamu
+30230,8,3,18,Erkek,İstanbul,Kamu
+69750,14,1,21,Erkek,İstanbul,Özel
+72790,16,7,29,Erkek,Karadeniz,Özel
+65700,16,26,50,Erkek,Batı Anadolu,Özel
+119090,12,28,46,Erkek,İstanbul,Özel
+38970,14,0,18,Erkek,Orta Anadolu,Özel
+113320,14,42,64,Kadın,Orta Anadolu,Kamu
+93910,12,36,53,Erkek,Ege,Kamu
+55100,8,6,18,Erkek,İstanbul,Kamu
+82900,12,40,60,Erkek,Batı Anadolu,Özel
+114320,18,42,64,Kadın,Orta Anadolu,Özel
+39790,8,11,27,Erkek,Orta Anadolu,Kamu
+30760,8,23,38,Erkek,Orta Anadolu,Kamu
+52030,12,20,40,Kadın,Batı Anadolu,Kamu
+62400,8,36,48,Erkek,Batı Anadolu,Özel
+64460,11,34,51,Kadın,Orta Anadolu,Özel
+139410,16,29,51,Kadın,Karadeniz,Özel
+30980,12,14,32,Erkek,Karadeniz,Özel
+60360,12,14,32,Kadın,Ege,Kamu
+55860,8,30,46,Erkek,Karadeniz,Kamu
+83960,14,6,28,Kadın,Karadeniz,Özel
+51700,8,7,19,Kadın,Doğu Anadolu,Özel
+43080,16,16,38,Kadın,İstanbul,Özel
+71670,12,13,33,Erkek,Batı Anadolu,Özel
+41020,8,37,53,Erkek,Orta Anadolu,Kamu
+40550,16,7,31,Kadın,Orta Anadolu,Kamu
+71170,12,45,64,Erkek,Ege,Kamu
+144490,12,32,49,Erkek,İstanbul,Özel
+27750,8,37,53,Erkek,Karadeniz,Özel
+83520,16,26,47,Kadın,Ege,Özel
+92240,12,44,61,Erkek,İstanbul,Özel
+29260,5,41,50,Erkek,İstanbul,Özel
+129530,18,38,61,Erkek,Akdeniz,Özel
+22880,5,50,59,Erkek,Batı Anadolu,Özel
+45090,8,36,52,Erkek,Orta Anadolu,Özel
+55010,12,45,61,Kadın,İstanbul,Özel
+54880,8,5,19,Erkek,Batı Anadolu,Özel
+62500,12,5,22,Erkek,Ege,Özel
+48590,12,32,51,Kadın,Ege,Özel
+97270,18,23,47,Erkek,Ege,Özel
+34710,18,0,22,Erkek,Akdeniz,Özel
+34640,5,20,33,Kadın,Orta Anadolu,Özel
+27940,16,24,48,Kadın,Batı Anadolu,Özel
+64670,8,18,32,Erkek,Batı Anadolu,Özel
+45440,16,40,60,Erkek,Doğu Anadolu,Özel
+38980,11,38,56,Erkek,Orta Anadolu,Özel
+85280,16,5,29,Erkek,İstanbul,Kamu
+71190,16,18,42,Erkek,Akdeniz,Özel
+60020,16,20,40,Erkek,Batı Anadolu,Kamu
+77650,18,15,38,Erkek,Karadeniz,Özel
+108730,11,33,49,Kadın,İstanbul,Özel
+37030,14,5,27,Kadın,Karadeniz,Kamu
+33210,16,15,37,Kadın,Batı Anadolu,Özel
+48410,5,42,52,Kadın,Batı Anadolu,Özel
+34140,14,12,30,Kadın,Ege,Özel
+41500,12,42,58,Kadın,Orta Anadolu,Kamu
+41990,8,8,20,Kadın,Akdeniz,Özel
+76360,12,31,49,Erkek,Ege,Kamu
+71430,12,31,49,Erkek,Karadeniz,Özel
+60350,12,34,51,Kadın,Orta Anadolu,Kamu
+53700,14,29,47,Kadın,Ege,Özel
+51980,12,3,23,Erkek,Orta Anadolu,Özel
+58270,16,10,32,Kadın,Karadeniz,Özel
+22820,8,17,32,Erkek,Orta Anadolu,Özel
+58340,11,15,30,Kadın,Batı Anadolu,Özel
+47280,12,20,40,Erkek,Doğu Anadolu,Özel
+96300,16,12,35,Erkek,Orta Anadolu,Özel
+81610,14,33,54,Kadın,İstanbul,Özel
+20330,8,10,26,Kadın,Orta Anadolu,Özel
+24830,16,0,22,Kadın,Orta Anadolu,Kamu
+100930,16,15,37,Erkek,Karadeniz,Özel
+45370,16,5,27,Kadın,İstanbul,Özel
+25600,5,51,64,Erkek,İstanbul,Kamu
+33380,8,49,62,Erkek,Orta Anadolu,Özel
+115120,16,21,44,Erkek,Ege,Özel
+76960,16,3,24,Erkek,Akdeniz,Özel
+28710,8,44,56,Kadın,Doğu Anadolu,Kamu
+53630,12,36,52,Kadın,Ege,Özel
+151050,11,31,47,Erkek,İstanbul,Özel
+44170,12,21,37,Erkek,İstanbul,Kamu
+24440,5,39,50,Erkek,Doğu Anadolu,Kamu
+60310,11,43,59,Kadın,İstanbul,Kamu
+62610,11,12,27,Erkek,Karadeniz,Özel
+40490,16,0,21,Kadın,Batı Anadolu,Özel
+56760,12,18,36,Erkek,Karadeniz,Kamu
+69630,8,38,52,Kadın,Ege,Kamu
+65200,12,23,40,Kadın,Akdeniz,Özel
+104050,12,42,62,Erkek,İstanbul,Özel
+32380,14,19,37,Erkek,Akdeniz,Özel
+40260,12,33,50,Erkek,Orta Anadolu,Özel
+81510,12,34,50,Kadın,Batı Anadolu,Özel
+173730,12,18,35,Erkek,İstanbul,Kamu
+95100,12,35,52,Erkek,Orta Anadolu,Özel
+261390,18,41,63,Kadın,Batı Anadolu,Özel
+56670,12,38,56,Erkek,Orta Anadolu,Özel
+141920,16,31,55,Kadın,Ege,Özel
+28120,5,35,46,Erkek,Akdeniz,Özel
+38190,8,37,49,Kadın,İstanbul,Özel
+96200,16,27,50,Kadın,Ege,Kamu
+102800,12,10,30,Erkek,Batı Anadolu,Kamu
+53340,12,42,60,Kadın,İstanbul,Özel
+60340,12,33,53,Kadın,Akdeniz,Özel
+116870,11,24,40,Erkek,İstanbul,Kamu
+44700,14,41,60,Erkek,Batı Anadolu,Özel
+116270,12,25,44,Kadın,İstanbul,Özel
+105990,12,29,48,Erkek,Orta Anadolu,Kamu
+88960,16,8,32,Erkek,İstanbul,Özel
+244650,18,12,36,Erkek,Karadeniz,Özel
+81720,20,33,61,Erkek,Ege,Özel
+64390,12,45,64,Erkek,Ege,Özel
+60430,8,21,37,Erkek,Karadeniz,Özel
+35570,5,7,20,Erkek,İstanbul,Özel
+30120,12,10,29,Kadın,Ege,Özel
+29520,5,24,33,Kadın,Batı Anadolu,Özel
+30360,8,34,48,Erkek,Ege,Özel
+46670,8,51,63,Kadın,Karadeniz,Kamu
+138090,20,0,24,Erkek,Karadeniz,Özel
+36240,8,32,47,Erkek,Batı Anadolu,Özel
+59530,8,27,43,Erkek,Akdeniz,Özel
+20250,16,0,22,Erkek,Karadeniz,Özel
+40710,14,40,59,Erkek,Akdeniz,Özel
+83070,16,23,44,Erkek,Orta Anadolu,Özel
+55610,12,13,29,Erkek,İstanbul,Özel
+80280,18,40,64,Erkek,Akdeniz,Kamu
+68400,18,0,18,Kadın,İstanbul,Özel
+31360,12,44,61,Kadın,Ege,Özel
+45520,20,0,25,Erkek,Batı Anadolu,Özel
+77530,12,16,32,Kadın,Batı Anadolu,Özel
+34830,12,22,39,Erkek,Akdeniz,Özel
+196210,16,9,29,Erkek,Doğu Anadolu,Özel
+40930,14,12,32,Erkek,Doğu Anadolu,Özel
+38520,8,16,30,Erkek,Ege,Özel
+43640,12,6,25,Kadın,Batı Anadolu,Özel
+41430,5,18,28,Erkek,Akdeniz,Özel
+36770,16,2,23,Erkek,Orta Anadolu,Özel
+19780,12,7,27,Kadın,Orta Anadolu,Özel
+32370,5,20,31,Erkek,Ege,Kamu
+125010,18,10,32,Kadın,Akdeniz,Özel
+96570,20,38,63,Erkek,Doğu Anadolu,Özel
+112470,16,31,54,Erkek,İstanbul,Özel
+71150,12,33,49,Erkek,Karadeniz,Özel
+66320,12,24,42,Kadın,Batı Anadolu,Özel
+28360,5,36,46,Kadın,Akdeniz,Özel
+57000,8,15,28,Erkek,Doğu Anadolu,Özel
+44810,12,31,51,Erkek,Karadeniz,Özel
+95180,12,38,57,Erkek,İstanbul,Kamu
+50590,16,24,44,Kadın,Doğu Anadolu,Özel
+48860,8,26,38,Erkek,Ege,Özel
+90730,8,45,61,Erkek,İstanbul,Özel
+85390,14,5,25,Kadın,İstanbul,Özel
+98160,16,26,47,Kadın,Akdeniz,Özel
+88390,16,27,47,Kadın,İstanbul,Özel
+200780,16,18,40,Kadın,İstanbul,Özel
+112220,20,0,20,Erkek,Karadeniz,Özel
+52800,12,7,23,Kadın,İstanbul,Özel
+34440,16,0,19,Erkek,Karadeniz,Özel
+43670,12,25,41,Erkek,Akdeniz,Özel
+91970,12,34,54,Erkek,İstanbul,Özel
+67770,16,23,45,Kadın,Karadeniz,Özel
+69120,12,12,32,Kadın,İstanbul,Özel
+79730,16,24,48,Erkek,İstanbul,Özel
+48840,12,29,47,Erkek,Doğu Anadolu,Özel
+48080,8,29,42,Kadın,Ege,Özel
+51280,8,26,38,Kadın,Karadeniz,Özel
+49840,12,31,49,Erkek,Orta Anadolu,Özel
+83260,16,42,64,Erkek,Orta Anadolu,Özel
+89220,16,11,33,Erkek,Batı Anadolu,Özel
+43330,12,4,22,Erkek,İstanbul,Özel
+33800,5,48,60,Erkek,Ege,Özel
+127720,12,48,64,Erkek,Akdeniz,Özel
+84160,8,48,60,Erkek,Karadeniz,Özel
+28410,12,31,50,Erkek,Orta Anadolu,Özel
+71970,12,27,43,Erkek,Akdeniz,Özel
+47060,12,48,64,Erkek,Doğu Anadolu,Özel
+130820,12,25,42,Erkek,Batı Anadolu,Kamu
+35570,5,16,26,Kadın,İstanbul,Özel
+34400,8,27,40,Erkek,Doğu Anadolu,Özel
+132390,16,10,31,Erkek,Orta Anadolu,Özel
+50640,12,4,22,Kadın,Orta Anadolu,Özel
+31500,16,0,23,Erkek,İstanbul,Özel
+31350,16,0,23,Erkek,Karadeniz,Özel
+45380,8,52,64,Kadın,Akdeniz,Kamu
+55640,12,40,58,Kadın,Akdeniz,Özel
+38380,12,15,31,Erkek,Akdeniz,Özel
+45040,8,17,29,Kadın,Batı Anadolu,Özel
+82100,8,14,29,Erkek,Batı Anadolu,Özel
+69510,16,10,30,Kadın,Akdeniz,Özel
+87800,16,21,43,Kadın,Batı Anadolu,Özel
+133110,12,28,46,Erkek,Karadeniz,Özel
+92360,16,38,59,Erkek,Karadeniz,Kamu
+137670,12,42,58,Erkek,İstanbul,Özel
+110870,16,21,43,Erkek,İstanbul,Özel
+49260,12,13,29,Erkek,Doğu Anadolu,Özel
+33960,12,0,18,Erkek,İstanbul,Özel
+32330,16,5,28,Erkek,Karadeniz,Kamu
+82190,16,13,33,Erkek,Akdeniz,Özel
+54120,12,13,29,Kadın,Doğu Anadolu,Kamu
+60980,16,26,47,Erkek,Ege,Özel
+64300,12,27,46,Erkek,İstanbul,Özel
+76660,14,20,40,Erkek,Ege,Kamu
+39840,16,23,45,Erkek,Karadeniz,Özel
+46640,12,10,28,Kadın,İstanbul,Kamu
+31800,16,9,31,Erkek,Batı Anadolu,Özel
+55560,12,17,34,Erkek,Batı Anadolu,Özel
+80780,18,11,37,Erkek,Doğu Anadolu,Özel
+161750,18,13,38,Kadın,Batı Anadolu,Özel
+41640,16,43,64,Erkek,İstanbul,Özel
+31090,16,0,18,Erkek,Doğu Anadolu,Özel
+53350,8,23,39,Erkek,Doğu Anadolu,Özel
+96560,14,25,47,Erkek,Orta Anadolu,Özel
+49080,16,0,18,Kadın,İstanbul,Özel
+124400,12,38,57,Kadın,Akdeniz,Özel
+44470,12,18,37,Erkek,Doğu Anadolu,Özel
+55380,8,13,25,Erkek,Karadeniz,Kamu
+46200,8,47,60,Kadın,Karadeniz,Özel
+44110,16,31,55,Erkek,Ege,Özel
+43120,8,17,33,Kadın,Doğu Anadolu,Kamu
+118100,16,15,36,Erkek,İstanbul,Özel
+22240,5,11,20,Erkek,Akdeniz,Kamu
+89250,12,13,30,Kadın,Doğu Anadolu,Özel
+22480,5,9,19,Kadın,Karadeniz,Özel
+180290,14,26,45,Erkek,Ege,Özel
+26240,11,13,30,Kadın,Akdeniz,Özel
+35890,12,6,26,Erkek,Akdeniz,Özel
+70670,11,16,34,Erkek,Akdeniz,Özel
+60490,12,16,32,Erkek,İstanbul,Özel
+133740,14,38,58,Erkek,Akdeniz,Özel
+36500,8,41,56,Erkek,Orta Anadolu,Özel
+29100,16,33,54,Kadın,Orta Anadolu,Özel
+146170,16,14,38,Kadın,İstanbul,Özel
+107460,18,24,50,Erkek,Ege,Kamu
+64560,12,43,63,Erkek,Ege,Özel
+69490,16,15,35,Erkek,Orta Anadolu,Özel
+53320,8,16,30,Kadın,Batı Anadolu,Özel
+95480,20,0,27,Kadın,Doğu Anadolu,Kamu
+14670,8,16,29,Kadın,Akdeniz,Kamu
+51900,12,3,23,Erkek,Akdeniz,Özel
+32370,8,30,43,Erkek,İstanbul,Kamu
+71870,16,8,30,Erkek,Karadeniz,Özel
+61680,12,40,56,Erkek,Ege,Özel
+156110,18,26,50,Kadın,İstanbul,Özel
+27470,8,40,55,Erkek,İstanbul,Özel
+66690,16,12,33,Erkek,Orta Anadolu,Özel
+121890,12,9,29,Erkek,Akdeniz,Kamu
+92220,8,32,46,Erkek,Doğu Anadolu,Özel
+32610,14,6,27,Erkek,Batı Anadolu,Özel
+22200,5,11,23,Erkek,Doğu Anadolu,Özel
+35170,12,13,33,Erkek,Batı Anadolu,Özel
+51990,12,19,37,Erkek,Karadeniz,Özel
+60190,5,26,36,Erkek,İstanbul,Özel
+85400,12,44,64,Erkek,Orta Anadolu,Özel
+32710,12,9,26,Kadın,Akdeniz,Özel
+26690,8,51,64,Kadın,Batı Anadolu,Özel
+27650,18,2,26,Erkek,Doğu Anadolu,Özel
+41440,12,42,58,Kadın,Ege,Özel
+54790,8,37,52,Erkek,Doğu Anadolu,Kamu
+110980,16,35,59,Erkek,Batı Anadolu,Özel
+100960,12,14,32,Erkek,İstanbul,Özel
+90260,12,27,47,Erkek,Orta Anadolu,Özel
+104740,12,44,61,Erkek,Batı Anadolu,Kamu
+86130,14,14,36,Kadın,Akdeniz,Özel
+52640,14,21,43,Kadın,İstanbul,Özel
+59070,11,44,59,Kadın,Karadeniz,Özel
+30900,16,0,19,Kadın,Ege,Kamu
+29530,14,26,46,Erkek,Akdeniz,Özel
+29660,14,30,51,Kadın,Karadeniz,Özel
+23960,8,5,19,Kadın,Doğu Anadolu,Özel
+77980,11,10,26,Erkek,İstanbul,Özel
+84670,12,42,60,Erkek,Batı Anadolu,Özel
+20780,5,26,37,Erkek,Karadeniz,Özel
+33700,5,28,40,Erkek,Akdeniz,Özel
+85400,14,18,38,Kadın,Orta Anadolu,Özel
+51320,12,10,30,Kadın,Akdeniz,Özel
+51450,16,0,20,Erkek,Batı Anadolu,Özel
+23940,5,22,34,Kadın,Orta Anadolu,Özel
+56130,16,37,60,Erkek,Orta Anadolu,Özel
+45570,8,39,54,Erkek,Orta Anadolu,Özel
+157240,16,11,31,Erkek,Ege,Özel
+153710,16,2,22,Erkek,Batı Anadolu,Özel
+29780,14,24,46,Kadın,Orta Anadolu,Özel
+63120,12,33,50,Kadın,Orta Anadolu,Özel
+54520,5,18,30,Erkek,Doğu Anadolu,Özel
+44750,16,21,44,Erkek,İstanbul,Özel
+67080,12,26,45,Erkek,Orta Anadolu,Özel
+86850,8,19,34,Erkek,Batı Anadolu,Özel
+98600,12,38,58,Kadın,Ege,Özel
+54470,5,46,56,Erkek,Batı Anadolu,Özel
+43140,12,9,26,Kadın,Doğu Anadolu,Özel
+57980,14,5,23,Kadın,Batı Anadolu,Özel
+180020,16,13,37,Kadın,Batı Anadolu,Özel
+63360,11,24,43,Kadın,Ege,Özel
+66710,8,29,42,Kadın,Batı Anadolu,Özel
+105280,12,20,38,Erkek,Orta Anadolu,Özel
+21260,5,12,22,Kadın,Doğu Anadolu,Özel
+130740,18,15,39,Erkek,Karadeniz,Özel
+161750,16,23,46,Erkek,Karadeniz,Özel
+132360,14,36,58,Erkek,İstanbul,Özel
+34220,5,52,64,Erkek,Ege,Özel
+68480,8,16,32,Erkek,Batı Anadolu,Özel
+228720,18,31,55,Erkek,Karadeniz,Özel
+45490,8,5,20,Kadın,Batı Anadolu,Kamu
+67680,8,27,42,Erkek,İstanbul,Özel
+70470,16,16,36,Erkek,Ege,Özel
+52050,12,8,27,Erkek,Karadeniz,Özel
+110110,12,18,34,Kadın,İstanbul,Kamu
+46110,12,6,23,Kadın,Batı Anadolu,Özel
+106450,16,16,37,Erkek,Batı Anadolu,Kamu
+98560,12,40,59,Erkek,İstanbul,Özel
+32680,16,0,18,Erkek,Batı Anadolu,Kamu
+45030,12,35,52,Kadın,Ege,Özel
+60200,11,25,41,Erkek,Doğu Anadolu,Özel
+83680,8,39,54,Erkek,Karadeniz,Kamu
+85770,16,17,41,Erkek,Akdeniz,Özel
+62790,8,27,39,Kadın,Doğu Anadolu,Özel
+76680,14,8,30,Erkek,Akdeniz,Özel
+49200,14,2,20,Kadın,Ege,Özel
+114720,18,24,46,Kadın,Karadeniz,Özel
+40190,8,31,44,Kadın,Doğu Anadolu,Özel
+49360,8,26,40,Erkek,Akdeniz,Özel
+76840,14,20,41,Kadın,İstanbul,Özel
+30580,12,3,21,Kadın,Akdeniz,Kamu
+61650,8,7,20,Kadın,İstanbul,Kamu
+77140,16,34,57,Erkek,Doğu Anadolu,Özel
+60600,16,15,36,Erkek,Ege,Özel
+34280,8,23,36,Erkek,Orta Anadolu,Özel
+59940,8,33,48,Erkek,Batı Anadolu,Özel
+117020,16,27,47,Erkek,Ege,Özel
+42590,12,6,24,Erkek,Doğu Anadolu,Kamu
+51510,18,16,41,Erkek,Karadeniz,Özel
+57540,12,10,30,Kadın,Akdeniz,Özel
+32970,8,27,41,Erkek,Doğu Anadolu,Kamu
+51690,8,14,28,Erkek,Ege,Özel
+28690,12,33,49,Erkek,Orta Anadolu,Özel
+122650,14,32,52,Kadın,Akdeniz,Kamu
+43020,5,24,35,Erkek,Akdeniz,Özel
+58740,12,17,36,Erkek,Batı Anadolu,Özel
+59440,12,21,37,Kadın,İstanbul,Kamu
+67670,14,27,48,Kadın,İstanbul,Özel
+54770,8,14,28,Erkek,Ege,Özel
+87660,16,12,36,Erkek,İstanbul,Özel
+104680,12,32,49,Kadın,Karadeniz,Özel
+60940,16,14,38,Erkek,Doğu Anadolu,Özel
+125320,16,20,43,Kadın,Ege,Özel
+106840,16,0,23,Erkek,Karadeniz,Özel
+43040,11,36,54,Kadın,Karadeniz,Özel
+109710,16,14,38,Erkek,Akdeniz,Özel
+22590,8,7,21,Erkek,Doğu Anadolu,Özel
+21470,12,48,64,Erkek,Doğu Anadolu,Özel
+52510,8,20,34,Kadın,İstanbul,Özel
+65340,12,33,53,Kadın,Akdeniz,Özel
+41310,5,33,45,Erkek,Doğu Anadolu,Kamu
+61870,18,25,50,Erkek,Orta Anadolu,Özel
+43150,5,24,35,Kadın,İstanbul,Kamu
+30080,12,39,55,Kadın,Orta Anadolu,Özel
+65390,16,39,62,Kadın,Ege,Özel
+60930,8,6,20,Erkek,Batı Anadolu,Kamu
+29560,12,45,62,Kadın,Karadeniz,Kamu
+90840,12,39,55,Kadın,İstanbul,Özel
+25610,16,0,23,Kadın,Orta Anadolu,Özel
+98470,14,34,55,Erkek,Ege,Özel
+37930,16,1,22,Erkek,Ege,Özel
+63450,16,29,49,Erkek,Batı Anadolu,Kamu
+22750,12,8,27,Kadın,Ege,Özel
+64210,12,42,60,Erkek,Doğu Anadolu,Özel
+26090,8,21,36,Erkek,Orta Anadolu,Kamu
+35280,8,7,20,Erkek,Doğu Anadolu,Kamu
+75310,16,42,62,Erkek,Karadeniz,Özel
+15960,11,4,22,Kadın,Orta Anadolu,Özel
+80170,16,37,61,Kadın,İstanbul,Özel
+34130,12,42,61,Kadın,Orta Anadolu,Özel
+31670,5,12,23,Kadın,Ege,Özel
+57360,11,18,37,Erkek,Karadeniz,Özel
+82130,12,9,25,Kadın,Akdeniz,Özel
+53270,8,47,62,Erkek,İstanbul,Özel
+63140,12,11,27,Erkek,Ege,Kamu
+127200,16,18,40,Erkek,İstanbul,Özel
+66470,12,42,59,Erkek,Karadeniz,Özel
+61390,12,20,38,Erkek,Ege,Özel
+141500,20,30,57,Kadın,Doğu Anadolu,Özel
+56790,8,42,55,Erkek,İstanbul,Özel
+71820,12,20,37,Kadın,Ege,Özel
+67900,20,12,39,Erkek,İstanbul,Özel
+67330,12,19,36,Kadın,İstanbul,Kamu
+70840,12,6,26,Kadın,İstanbul,Özel
+102310,12,28,48,Erkek,İstanbul,Özel
+71170,8,25,38,Erkek,İstanbul,Özel
+132240,16,28,52,Erkek,Akdeniz,Özel
+81230,16,3,27,Erkek,Ege,Kamu
+160410,18,12,37,Kadın,İstanbul,Özel
+50360,12,44,60,Erkek,İstanbul,Özel
+90940,12,47,63,Erkek,İstanbul,Özel
+70770,14,39,58,Kadın,Orta Anadolu,Özel
+112680,18,25,47,Erkek,Batı Anadolu,Kamu
+64490,18,0,23,Kadın,Karadeniz,Kamu
+60850,11,22,41,Kadın,Ege,Özel
+43820,18,8,34,Erkek,Orta Anadolu,Özel
+38370,16,5,27,Kadın,Orta Anadolu,Kamu
+147240,16,34,56,Erkek,Karadeniz,Kamu
+32350,8,29,43,Kadın,Akdeniz,Özel
+98480,18,0,19,Kadın,Batı Anadolu,Özel
+92680,16,0,20,Erkek,İstanbul,Özel
+51100,8,6,18,Erkek,İstanbul,Kamu
+72690,12,27,46,Erkek,Akdeniz,Özel
+61610,8,12,26,Erkek,Karadeniz,Özel
+115490,16,12,33,Erkek,Batı Anadolu,Kamu
+94520,12,44,61,Erkek,Karadeniz,Özel
+88630,12,11,28,Erkek,Batı Anadolu,Özel
+63070,16,16,40,Kadın,Doğu Anadolu,Özel
+56520,16,10,33,Kadın,Karadeniz,Özel
+49260,8,12,26,Erkek,İstanbul,Kamu
+104320,16,31,53,Kadın,Orta Anadolu,Özel
+26680,12,8,28,Kadın,Doğu Anadolu,Özel
+29690,8,37,53,Erkek,Batı Anadolu,Özel
+46660,12,6,24,Erkek,Akdeniz,Özel
+31860,12,32,48,Kadın,Karadeniz,Özel
+67890,16,24,44,Erkek,Akdeniz,Özel
+104150,16,30,54,Erkek,Karadeniz,Özel
+50840,8,13,27,Kadın,İstanbul,Kamu
+96660,12,34,50,Kadın,Doğu Anadolu,Özel
+65870,16,26,47,Erkek,İstanbul,Özel
+37110,14,33,54,Kadın,Batı Anadolu,Özel
+107020,16,39,63,Kadın,Orta Anadolu,Özel
+37780,12,44,63,Erkek,Batı Anadolu,Özel
+45140,8,32,47,Kadın,Doğu Anadolu,Özel
+36520,12,33,49,Erkek,Batı Anadolu,Özel
+33270,12,9,29,Kadın,Batı Anadolu,Özel
+72860,16,0,19,Erkek,Karadeniz,Özel
+25670,12,5,25,Erkek,Orta Anadolu,Kamu
+45660,8,43,56,Erkek,Batı Anadolu,Özel
+96760,16,7,31,Erkek,İstanbul,Özel
+24310,12,0,18,Erkek,Ege,Özel
+82790,12,23,40,Erkek,Batı Anadolu,Özel
+86560,18,0,19,Kadın,Doğu Anadolu,Özel
+49920,14,8,28,Erkek,Doğu Anadolu,Özel
+58200,14,10,29,Erkek,Akdeniz,Özel
+91610,18,0,18,Kadın,Doğu Anadolu,Özel
+29830,16,0,20,Kadın,Batı Anadolu,Kamu
+147990,18,32,55,Kadın,Akdeniz,Kamu
+84320,14,24,46,Erkek,Batı Anadolu,Özel
+91680,12,25,44,Kadın,İstanbul,Kamu
+75500,11,31,49,Erkek,İstanbul,Kamu
+36440,8,40,52,Erkek,İstanbul,Özel
+78190,12,45,63,Kadın,İstanbul,Kamu
+36870,5,25,36,Erkek,Doğu Anadolu,Özel
+35210,8,46,59,Kadın,İstanbul,Özel
+31870,16,8,28,Erkek,Karadeniz,Özel
+66210,14,21,41,Kadın,Doğu Anadolu,Özel
+35370,5,36,46,Kadın,Akdeniz,Özel
+27300,8,30,46,Erkek,Akdeniz,Özel
+37180,14,18,37,Kadın,Orta Anadolu,Özel
+27760,12,23,41,Erkek,Batı Anadolu,Özel
+74060,12,13,31,Erkek,Batı Anadolu,Kamu
+48760,8,42,54,Kadın,İstanbul,Özel
+83390,16,38,58,Erkek,İstanbul,Özel
+84310,11,25,44,Erkek,Akdeniz,Kamu
+147050,12,46,63,Erkek,Batı Anadolu,Özel
+48250,12,17,35,Erkek,Karadeniz,Kamu
+36360,12,37,54,Kadın,Karadeniz,Özel
+182320,20,10,38,Kadın,Ege,Özel
+21040,8,44,60,Erkek,Orta Anadolu,Özel
+17880,8,49,64,Erkek,Karadeniz,Kamu
+65410,8,30,45,Erkek,Karadeniz,Kamu
+74940,16,39,59,Erkek,Doğu Anadolu,Özel
+35940,12,12,29,Kadın,İstanbul,Kamu
+67790,18,13,35,Kadın,Akdeniz,Kamu
+36060,5,44,57,Erkek,Ege,Kamu
+63560,12,29,49,Kadın,İstanbul,Özel
+110230,16,30,52,Erkek,Orta Anadolu,Özel
+63800,12,33,51,Erkek,İstanbul,Özel
+26990,12,6,24,Erkek,İstanbul,Özel
+30270,16,6,28,Erkek,Orta Anadolu,Özel
+81150,12,45,64,Erkek,Doğu Anadolu,Özel
+62950,16,21,43,Erkek,Orta Anadolu,Özel
+29260,8,47,62,Erkek,Doğu Anadolu,Özel
+13620,12,0,19,Erkek,Akdeniz,Özel
+39430,14,16,35,Erkek,Ege,Özel
+92200,16,26,48,Kadın,Batı Anadolu,Özel
+38850,8,23,39,Kadın,İstanbul,Özel
+113470,16,36,57,Erkek,İstanbul,Özel
+84920,14,15,37,Kadın,Batı Anadolu,Kamu
+70500,16,31,54,Erkek,Karadeniz,Özel
+244830,14,23,41,Kadın,İstanbul,Özel
+55700,12,39,58,Erkek,Ege,Özel
+78550,16,9,30,Kadın,Doğu Anadolu,Özel
+62090,11,36,52,Erkek,Doğu Anadolu,Özel
+64540,5,14,25,Erkek,İstanbul,Özel
+68950,16,13,35,Erkek,Orta Anadolu,Kamu
+54960,16,41,62,Kadın,Karadeniz,Özel
+43380,16,0,22,Kadın,İstanbul,Özel
+76190,12,30,49,Kadın,Batı Anadolu,Özel
+68190,16,3,27,Kadın,Orta Anadolu,Özel
+52790,16,43,64,Kadın,Karadeniz,Kamu
+58990,11,18,36,Erkek,Karadeniz,Özel
+48820,16,28,50,Erkek,Ege,Kamu
+279570,18,38,60,Erkek,İstanbul,Özel
+72580,12,14,33,Kadın,Doğu Anadolu,Özel
+92610,11,28,47,Erkek,Batı Anadolu,Özel
+59720,12,36,55,Erkek,Karadeniz,Özel
+62590,16,28,49,Erkek,Doğu Anadolu,Özel
+68090,14,9,29,Kadın,Akdeniz,Özel
+71300,18,14,39,Erkek,Akdeniz,Kamu
+55570,18,38,64,Erkek,Batı Anadolu,Özel
+87970,16,0,21,Erkek,İstanbul,Kamu
+93230,16,15,36,Kadın,İstanbul,Özel
+60670,8,18,32,Kadın,Orta Anadolu,Özel
+48060,12,21,37,Kadın,İstanbul,Özel
+89860,16,0,23,Erkek,Ege,Özel
+52150,12,34,50,Erkek,Akdeniz,Özel
+30720,8,6,22,Erkek,Doğu Anadolu,Özel
+43390,5,21,32,Erkek,Akdeniz,Kamu
+44500,8,29,41,Kadın,Akdeniz,Özel
+37970,12,19,38,Kadın,Karadeniz,Özel
+109130,18,0,25,Erkek,Batı Anadolu,Özel
+35280,12,14,34,Erkek,Orta Anadolu,Özel
+184650,16,27,49,Kadın,İstanbul,Özel
+17270,8,5,19,Kadın,İstanbul,Özel
+135360,16,34,57,Erkek,Doğu Anadolu,Özel
+71160,18,20,45,Kadın,Batı Anadolu,Özel
+61520,12,33,53,Erkek,Ege,Kamu
+35780,12,26,45,Kadın,İstanbul,Kamu
+89970,16,40,64,Erkek,Batı Anadolu,Özel
+38590,8,21,34,Kadın,Doğu Anadolu,Özel
+83950,18,0,19,Erkek,Doğu Anadolu,Özel
+128240,16,11,35,Erkek,Akdeniz,Özel
+114720,18,29,54,Kadın,İstanbul,Kamu
+47190,16,0,19,Kadın,Doğu Anadolu,Kamu
+75150,12,29,45,Erkek,Karadeniz,Özel
+97160,14,13,32,Erkek,İstanbul,Kamu
+111040,12,37,53,Erkek,Orta Anadolu,Özel
+77660,12,32,52,Erkek,Ege,Özel
+60200,20,0,23,Erkek,İstanbul,Özel
+48680,5,30,41,Erkek,Batı Anadolu,Özel
+29800,11,22,41,Erkek,Akdeniz,Özel
+34510,18,3,26,Kadın,Akdeniz,Özel
+51820,18,0,20,Erkek,Doğu Anadolu,Özel
+45940,11,7,24,Erkek,Ege,Özel
+181660,20,0,27,Erkek,Batı Anadolu,Kamu
+80540,16,17,40,Erkek,Doğu Anadolu,Özel
+74470,16,14,38,Erkek,Akdeniz,Özel
+77120,12,20,40,Kadın,Akdeniz,Özel
+90100,12,40,59,Kadın,İstanbul,Kamu
+42840,5,30,39,Erkek,Karadeniz,Özel
+61570,12,6,26,Kadın,Karadeniz,Özel
+93250,12,27,45,Erkek,Akdeniz,Özel
+39870,8,50,63,Erkek,Ege,Özel
+37170,8,18,34,Erkek,Akdeniz,Özel
+21310,11,5,20,Kadın,Karadeniz,Özel
+78290,12,16,36,Erkek,Orta Anadolu,Özel
+78150,16,24,47,Kadın,Doğu Anadolu,Özel
+76970,12,14,33,Kadın,Ege,Özel
+53410,12,25,42,Kadın,Orta Anadolu,Özel
+103380,16,27,47,Kadın,Akdeniz,Özel
+50010,16,0,20,Kadın,Orta Anadolu,Özel
+22620,12,0,19,Erkek,Ege,Özel
+74440,14,28,50,Erkek,Akdeniz,Kamu
+41350,18,28,51,Erkek,Ege,Özel
+32700,5,23,32,Kadın,Akdeniz,Özel
+346530,14,37,55,Erkek,Batı Anadolu,Kamu
+144990,16,31,51,Erkek,Doğu Anadolu,Özel
+116650,12,16,35,Erkek,Batı Anadolu,Özel
+57080,16,4,24,Erkek,Karadeniz,Kamu
+33620,16,0,19,Kadın,Karadeniz,Kamu
+52260,16,10,30,Kadın,Orta Anadolu,Özel
+92570,12,31,51,Erkek,Akdeniz,Özel
+46860,16,24,47,Kadın,Karadeniz,Özel
+259940,16,24,47,Kadın,Orta Anadolu,Kamu
+47530,12,14,32,Erkek,Akdeniz,Özel
+37910,5,41,53,Erkek,İstanbul,Özel
+128690,18,0,22,Erkek,Ege,Özel
+56780,12,7,24,Kadın,Batı Anadolu,Özel
+71440,11,23,41,Kadın,Doğu Anadolu,Kamu
+28350,11,27,44,Erkek,Batı Anadolu,Özel
+60450,12,32,49,Erkek,Orta Anadolu,Kamu
+58810,12,20,36,Kadın,Batı Anadolu,Özel
+44620,12,7,24,Erkek,Doğu Anadolu,Özel
+85080,12,3,20,Erkek,Doğu Anadolu,Kamu
+22840,5,50,59,Kadın,Akdeniz,Kamu
+140750,20,21,47,Erkek,Doğu Anadolu,Kamu
+51430,5,16,29,Kadın,Ege,Özel
+33300,16,19,41,Kadın,İstanbul,Özel
+16970,5,53,62,Erkek,Doğu Anadolu,Kamu
+61530,12,37,55,Erkek,Batı Anadolu,Özel
+65870,16,27,47,Erkek,Akdeniz,Kamu
+36300,14,14,34,Erkek,Doğu Anadolu,Özel
+68280,16,4,25,Kadın,Batı Anadolu,Özel
+73040,8,23,37,Kadın,Akdeniz,Kamu
+33580,16,7,31,Kadın,Akdeniz,Özel
+90940,14,9,30,Kadın,Akdeniz,Özel
+58600,18,23,48,Kadın,Akdeniz,Özel
+85740,20,12,40,Erkek,Ege,Özel
+147470,16,17,41,Erkek,Ege,Özel
+104200,16,20,40,Kadın,Orta Anadolu,Özel
+59640,18,0,18,Erkek,Doğu Anadolu,Özel
+43010,16,0,21,Kadın,Doğu Anadolu,Özel
+68180,14,11,33,Erkek,Batı Anadolu,Özel
+40110,12,43,63,Erkek,Batı Anadolu,Özel
+107780,12,39,58,Erkek,Akdeniz,Özel
+85310,14,34,56,Kadın,Karadeniz,Özel
+28170,14,44,62,Kadın,Orta Anadolu,Kamu
+46160,5,45,57,Kadın,İstanbul,Özel
+25830,8,43,57,Erkek,Doğu Anadolu,Kamu
+89980,12,22,40,Erkek,Ege,Özel
+31590,11,8,25,Erkek,Batı Anadolu,Kamu
+149590,14,14,35,Kadın,Akdeniz,Özel
+193380,20,4,30,Erkek,Ege,Kamu
+76210,11,36,52,Kadın,Orta Anadolu,Özel
+114010,16,18,42,Erkek,Karadeniz,Özel
+33340,12,45,64,Erkek,Karadeniz,Özel
+38550,16,9,30,Kadın,Karadeniz,Kamu
+67070,8,37,53,Erkek,Doğu Anadolu,Özel
+77780,14,4,26,Erkek,Batı Anadolu,Kamu
+58600,12,4,22,Erkek,Akdeniz,Kamu
+61830,16,25,49,Kadın,Ege,Kamu
+31270,8,41,55,Kadın,Karadeniz,Özel
+56630,12,39,56,Erkek,Orta Anadolu,Kamu
+115820,16,17,39,Erkek,Ege,Özel
+107740,14,19,40,Kadın,Orta Anadolu,Özel
+62040,8,3,18,Kadın,Ege,Kamu
+46860,16,2,22,Kadın,Doğu Anadolu,Özel
+43050,8,15,29,Kadın,Ege,Özel
+22080,5,51,63,Kadın,Batı Anadolu,Özel
+21410,8,45,60,Erkek,Ege,Özel
+134550,16,41,61,Erkek,Ege,Kamu
+40220,16,16,40,Erkek,Ege,Özel
+70510,16,24,44,Erkek,Orta Anadolu,Özel
+103810,16,30,53,Erkek,Ege,Özel
+112830,16,24,46,Kadın,Akdeniz,Kamu
+97280,18,15,38,Kadın,İstanbul,Özel
+75760,12,18,36,Kadın,Karadeniz,Özel
+66490,14,0,18,Erkek,Doğu Anadolu,Özel
+58730,18,7,30,Erkek,Orta Anadolu,Özel
+43300,12,28,46,Erkek,Karadeniz,Kamu
+47920,8,10,25,Erkek,Batı Anadolu,Özel
+72030,18,7,31,Kadın,Doğu Anadolu,Özel
+44470,5,44,55,Erkek,İstanbul,Kamu
+52190,12,5,24,Erkek,Doğu Anadolu,Özel
+37420,18,23,48,Kadın,Doğu Anadolu,Özel
+72370,16,28,50,Erkek,Doğu Anadolu,Özel
+160150,14,31,50,Kadın,Batı Anadolu,Özel
+57350,12,30,46,Kadın,İstanbul,Özel
+70770,11,41,58,Erkek,Karadeniz,Kamu
+42910,12,9,29,Kadın,İstanbul,Kamu
+127150,16,21,44,Kadın,Orta Anadolu,Özel
+46810,12,2,20,Erkek,Ege,Özel
+60830,16,13,33,Erkek,İstanbul,Özel
+283020,18,34,56,Erkek,Batı Anadolu,Özel
+25180,14,39,59,Kadın,İstanbul,Özel
+63440,16,29,50,Erkek,Ege,Özel
+159000,16,40,63,Erkek,Batı Anadolu,Kamu
+34310,12,7,24,Erkek,Batı Anadolu,Özel
+31180,11,11,26,Kadın,İstanbul,Özel
+45320,16,32,54,Erkek,Karadeniz,Özel
+73220,16,25,49,Erkek,Karadeniz,Kamu
+92420,18,10,36,Erkek,Akdeniz,Özel
+24580,5,25,38,Erkek,Akdeniz,Özel
+65620,12,36,54,Kadın,Orta Anadolu,Özel
+34810,5,43,53,Erkek,Doğu Anadolu,Özel
+79430,12,39,58,Erkek,Karadeniz,Özel
+28480,12,2,21,Erkek,Akdeniz,Kamu
+37850,8,9,25,Erkek,Doğu Anadolu,Özel
+53670,20,6,33,Erkek,Orta Anadolu,Özel
+76090,16,18,40,Kadın,Ege,Özel
+45350,12,3,23,Erkek,Orta Anadolu,Özel
+208870,16,32,54,Erkek,Orta Anadolu,Özel
+55510,8,26,38,Kadın,Doğu Anadolu,Özel
+71960,11,46,62,Erkek,Akdeniz,Özel
+172360,16,38,61,Kadın,Ege,Özel
+63160,14,30,49,Erkek,İstanbul,Özel
+61540,16,36,57,Kadın,Akdeniz,Kamu
+70600,12,29,48,Kadın,Batı Anadolu,Kamu
+45080,8,7,22,Kadın,Karadeniz,Kamu
+68630,12,45,62,Erkek,Doğu Anadolu,Özel
+83970,16,26,49,Kadın,Doğu Anadolu,Özel
+142770,16,1,23,Erkek,İstanbul,Özel
+118000,16,22,45,Erkek,Akdeniz,Özel
+114970,20,20,46,Kadın,Orta Anadolu,Özel
+57740,12,17,36,Erkek,Batı Anadolu,Özel
+131010,16,30,51,Kadın,Akdeniz,Özel
+80610,20,30,56,Erkek,Akdeniz,Özel
+72080,11,19,36,Kadın,Batı Anadolu,Özel
+48880,5,29,40,Erkek,Ege,Özel
+44380,8,32,45,Kadın,Karadeniz,Özel
+198770,16,24,47,Erkek,İstanbul,Özel
+188190,16,19,39,Erkek,Doğu Anadolu,Özel
+36660,11,27,43,Kadın,Orta Anadolu,Özel
+82570,18,0,21,Erkek,Doğu Anadolu,Özel
+37120,8,24,38,Erkek,Akdeniz,Özel
+96120,16,15,36,Erkek,Karadeniz,Özel
+35000,8,14,30,Erkek,Karadeniz,Özel
+47530,16,0,18,Erkek,Batı Anadolu,Özel
+28860,5,41,54,Erkek,Doğu Anadolu,Özel
+110000,12,32,51,Erkek,İstanbul,Kamu
+69020,12,34,53,Erkek,Karadeniz,Özel
+65820,14,37,59,Kadın,Akdeniz,Özel
+150040,16,37,60,Erkek,Doğu Anadolu,Özel
+91210,12,9,26,Erkek,Akdeniz,Kamu
+105300,18,29,51,Kadın,Orta Anadolu,Özel
+32240,12,40,59,Kadın,Ege,Özel
+24080,12,26,45,Kadın,Batı Anadolu,Özel
+35790,8,14,29,Erkek,Orta Anadolu,Özel
+42970,5,24,35,Kadın,Batı Anadolu,Özel
+23320,5,10,19,Erkek,Batı Anadolu,Özel
+173460,16,34,56,Erkek,Akdeniz,Özel
+27290,5,20,32,Erkek,Karadeniz,Kamu
+93110,14,3,21,Erkek,Orta Anadolu,Özel
+164070,14,17,38,Erkek,İstanbul,Kamu
+86380,12,30,47,Erkek,Doğu Anadolu,Özel
+50340,12,38,57,Erkek,Ege,Özel
+56730,5,13,24,Kadın,İstanbul,Kamu
+46980,8,32,45,Erkek,Orta Anadolu,Kamu
+68200,14,20,39,Erkek,Karadeniz,Özel
+62970,16,0,21,Kadın,İstanbul,Kamu
+36520,12,31,50,Erkek,Karadeniz,Özel
+74980,12,9,27,Erkek,Ege,Özel
+138250,16,7,30,Erkek,Batı Anadolu,Özel
+44890,5,40,52,Erkek,Orta Anadolu,Özel
+53450,12,34,50,Kadın,Akdeniz,Özel
+73020,18,19,41,Erkek,Orta Anadolu,Özel
+43160,12,30,46,Kadın,Doğu Anadolu,Özel
+132590,12,27,46,Kadın,İstanbul,Özel
+107450,12,42,60,Erkek,Batı Anadolu,Özel
+40740,12,4,24,Erkek,Orta Anadolu,Özel
+39010,16,0,18,Kadın,Orta Anadolu,Kamu
+61050,16,23,45,Erkek,İstanbul,Özel
+52190,12,17,33,Kadın,Batı Anadolu,Özel
+46480,12,17,33,Kadın,Akdeniz,Kamu
+116080,14,32,50,Kadın,Doğu Anadolu,Özel
+21710,14,0,20,Erkek,Karadeniz,Özel
+43200,8,29,41,Erkek,Doğu Anadolu,Özel
+128560,12,15,35,Erkek,Ege,Kamu
+79930,16,36,57,Kadın,Karadeniz,Özel
+38800,8,29,45,Erkek,Doğu Anadolu,Özel
+37770,16,42,62,Kadın,Ege,Kamu
+64250,8,33,45,Erkek,Doğu Anadolu,Kamu
+27490,8,3,18,Kadın,Ege,Özel
+45390,12,14,32,Erkek,Ege,Özel
+146090,16,18,41,Erkek,Batı Anadolu,Özel
+87390,14,20,39,Erkek,İstanbul,Özel
+25960,14,1,20,Erkek,Akdeniz,Özel
+44790,8,21,33,Kadın,Karadeniz,Özel
+77730,12,11,27,Erkek,Karadeniz,Özel
+45370,12,23,40,Erkek,Doğu Anadolu,Özel
+69840,5,23,35,Kadın,İstanbul,Kamu
+56840,16,34,55,Erkek,Karadeniz,Kamu
+94170,8,35,47,Erkek,Orta Anadolu,Özel
+52360,12,28,47,Erkek,Doğu Anadolu,Özel
+205930,12,33,50,Erkek,İstanbul,Kamu
+82460,14,16,38,Erkek,Ege,Özel
+68680,16,11,33,Kadın,Batı Anadolu,Özel
+41550,16,3,26,Kadın,İstanbul,Özel
+33610,8,22,35,Kadın,Orta Anadolu,Özel
+20350,8,12,28,Kadın,Orta Anadolu,Özel
+45700,12,19,37,Erkek,Karadeniz,Özel
+87540,12,37,53,Kadın,Doğu Anadolu,Özel
+59470,16,41,61,Kadın,Batı Anadolu,Özel
+118110,12,14,31,Erkek,İstanbul,Özel
+55300,12,18,34,Kadın,Akdeniz,Kamu
+76980,14,31,50,Erkek,Doğu Anadolu,Özel
+53220,12,44,60,Kadın,Doğu Anadolu,Kamu
+40290,16,2,24,Kadın,Batı Anadolu,Özel
+134060,16,16,40,Kadın,Batı Anadolu,Özel
+44650,16,3,24,Kadın,Akdeniz,Özel
+55030,20,6,33,Kadın,Karadeniz,Özel
+145190,14,37,57,Erkek,Karadeniz,Kamu
+65130,14,18,37,Erkek,Batı Anadolu,Özel
+56760,16,24,48,Erkek,Ege,Özel
+67740,14,22,40,Erkek,Batı Anadolu,Özel
+83690,18,2,24,Kadın,Doğu Anadolu,Kamu
+62970,12,26,42,Kadın,İstanbul,Kamu
+83620,12,40,60,Erkek,Batı Anadolu,Kamu
+49610,8,43,57,Erkek,Doğu Anadolu,Özel
+157520,18,31,57,Kadın,Orta Anadolu,Özel
+84900,8,14,26,Erkek,İstanbul,Özel
+204590,16,21,43,Erkek,İstanbul,Kamu
+43810,12,2,18,Erkek,Doğu Anadolu,Özel
+56560,20,7,35,Kadın,Orta Anadolu,Özel
+44550,8,29,45,Erkek,Doğu Anadolu,Kamu
+22760,8,13,28,Kadın,Karadeniz,Özel
+86680,16,41,64,Erkek,İstanbul,Kamu
+95090,12,17,33,Erkek,Batı Anadolu,Özel
+65550,12,28,47,Kadın,Akdeniz,Özel
+37930,8,36,50,Kadın,Batı Anadolu,Özel
+51660,8,20,32,Erkek,Ege,Özel
+36700,16,4,27,Erkek,Doğu Anadolu,Özel
+59210,12,1,18,Erkek,Orta Anadolu,Özel
+83290,16,31,53,Erkek,Doğu Anadolu,Özel
+130350,12,9,28,Erkek,Batı Anadolu,Kamu
+32630,12,43,63,Kadın,Doğu Anadolu,Kamu
+63650,16,18,40,Erkek,Batı Anadolu,Özel
+63990,16,29,52,Kadın,Orta Anadolu,Özel
+51440,12,7,25,Erkek,Orta Anadolu,Özel
+62350,14,3,21,Erkek,İstanbul,Özel
+28940,5,50,63,Erkek,Akdeniz,Özel
+76250,12,10,29,Erkek,Doğu Anadolu,Özel
+50090,12,1,19,Erkek,Karadeniz,Özel
+31260,12,7,23,Erkek,Batı Anadolu,Özel
+75560,12,40,59,Erkek,İstanbul,Özel
+47270,16,25,45,Kadın,İstanbul,Özel
+73610,8,31,47,Kadın,Karadeniz,Özel
+54320,16,9,29,Kadın,İstanbul,Özel
+67090,8,41,57,Erkek,İstanbul,Kamu
+65100,16,8,32,Erkek,Batı Anadolu,Özel
+44520,12,2,20,Erkek,İstanbul,Kamu
+29000,16,0,19,Erkek,Batı Anadolu,Kamu
+73820,12,36,54,Erkek,İstanbul,Kamu
+65680,12,28,48,Erkek,Ege,Özel
+65330,14,7,26,Erkek,Karadeniz,Özel
+211900,18,26,50,Erkek,Karadeniz,Kamu
+146120,14,34,53,Kadın,Akdeniz,Kamu
+95640,5,33,44,Erkek,İstanbul,Özel
+16430,5,37,47,Kadın,Doğu Anadolu,Özel
+73040,8,11,23,Kadın,Akdeniz,Özel
+99320,12,40,56,Erkek,İstanbul,Kamu
+57170,8,34,50,Erkek,Orta Anadolu,Özel
+55260,18,1,23,Erkek,Doğu Anadolu,Özel
+44350,11,44,61,Kadın,Doğu Anadolu,Özel
+87390,12,44,63,Erkek,Batı Anadolu,Özel
+56970,8,47,60,Erkek,İstanbul,Özel
+34340,12,18,36,Kadın,Doğu Anadolu,Özel
+38060,12,46,63,Kadın,Akdeniz,Özel
+37260,12,27,45,Kadın,Doğu Anadolu,Özel
+33680,8,44,59,Erkek,Karadeniz,Özel
+44770,16,35,58,Kadın,Orta Anadolu,Özel
+56560,18,26,51,Kadın,Doğu Anadolu,Özel
+48160,8,8,20,Erkek,Doğu Anadolu,Özel
+46620,8,12,26,Erkek,Doğu Anadolu,Özel
+92820,16,28,51,Erkek,Batı Anadolu,Kamu
+36620,12,44,64,Kadın,Karadeniz,Özel
+25890,5,14,23,Erkek,İstanbul,Kamu
+28140,5,15,28,Erkek,Doğu Anadolu,Özel
+23540,20,0,24,Kadın,Orta Anadolu,Özel
+100480,16,16,36,Kadın,Akdeniz,Özel
+71520,12,31,50,Kadın,İstanbul,Özel
+32200,8,46,62,Erkek,Ege,Özel
+36590,16,8,30,Kadın,İstanbul,Özel
+31150,12,48,64,Kadın,Doğu Anadolu,Özel
+94910,12,22,39,Erkek,Orta Anadolu,Özel
+119130,16,8,32,Erkek,İstanbul,Özel
+93190,16,33,54,Kadın,Ege,Özel
+34620,5,49,62,Kadın,İstanbul,Özel
+64080,12,15,31,Erkek,Orta Anadolu,Özel
+59290,12,5,25,Erkek,Orta Anadolu,Özel
+56280,18,10,36,Erkek,İstanbul,Kamu
+59230,12,10,29,Erkek,Ege,Özel
+46300,12,7,27,Kadın,İstanbul,Özel
+54170,14,0,20,Erkek,Orta Anadolu,Özel
+56590,16,7,31,Erkek,Ege,Özel
+68920,14,30,50,Kadın,Batı Anadolu,Özel
+91200,12,37,56,Erkek,İstanbul,Kamu
+45210,8,9,21,Erkek,Karadeniz,Özel
+31000,11,6,22,Erkek,Doğu Anadolu,Kamu
+128670,16,23,44,Erkek,Batı Anadolu,Özel
+39620,8,42,54,Erkek,Karadeniz,Özel
+57710,18,13,38,Kadın,Akdeniz,Kamu
+120690,18,27,51,Erkek,Orta Anadolu,Özel
+50050,14,12,32,Erkek,Karadeniz,Kamu
+33780,12,3,23,Erkek,İstanbul,Özel
+326150,18,27,52,Erkek,İstanbul,Kamu
+123370,16,36,57,Erkek,Batı Anadolu,Özel
+53640,16,27,48,Kadın,Karadeniz,Kamu
+75440,8,41,57,Erkek,İstanbul,Kamu
+65720,14,14,34,Kadın,Karadeniz,Özel
+116710,16,26,47,Erkek,Akdeniz,Özel
+45020,8,15,28,Erkek,Akdeniz,Özel
+42730,11,19,37,Erkek,İstanbul,Özel
+35030,12,37,57,Erkek,Orta Anadolu,Özel
+75040,16,13,37,Kadın,Akdeniz,Kamu
+27660,8,36,48,Erkek,Orta Anadolu,Özel
+69970,16,39,61,Kadın,Batı Anadolu,Özel
+26020,12,48,64,Erkek,Orta Anadolu,Özel
+71800,16,18,42,Kadın,İstanbul,Özel
+41290,8,14,27,Kadın,Ege,Kamu
+69670,18,3,27,Erkek,Batı Anadolu,Özel
+45520,8,47,63,Erkek,Doğu Anadolu,Kamu
+78850,16,38,60,Kadın,Karadeniz,Özel
+30580,5,50,62,Erkek,Doğu Anadolu,Özel
+69760,16,3,25,Kadın,Ege,Kamu
+76620,12,42,61,Kadın,Batı Anadolu,Özel
+50140,12,26,46,Kadın,Akdeniz,Özel
+100250,16,15,37,Kadın,Orta Anadolu,Özel
+78530,12,28,44,Erkek,Batı Anadolu,Kamu
+74200,12,34,54,Erkek,Akdeniz,Özel
+95210,14,31,50,Erkek,İstanbul,Özel
+26460,5,28,40,Kadın,Doğu Anadolu,Özel
+83340,14,4,25,Erkek,İstanbul,Kamu
+40000,18,32,56,Kadın,Doğu Anadolu,Özel
+35950,12,12,32,Erkek,Akdeniz,Özel
+32460,16,10,30,Erkek,Orta Anadolu,Özel
+44310,8,10,24,Kadın,Akdeniz,Kamu
+57210,12,37,53,Kadın,İstanbul,Özel
+46980,8,33,48,Kadın,Orta Anadolu,Özel
+75080,8,12,25,Erkek,Akdeniz,Özel
+105390,14,31,53,Kadın,Batı Anadolu,Özel
+15040,5,18,31,Kadın,Karadeniz,Özel
+69970,20,23,50,Erkek,Doğu Anadolu,Kamu
+144220,16,16,38,Erkek,Ege,Özel
+57130,11,28,45,Erkek,Karadeniz,Özel
+108920,14,7,25,Erkek,İstanbul,Özel
+55560,5,15,27,Kadın,Batı Anadolu,Özel
+39290,14,9,30,Erkek,Doğu Anadolu,Özel
+293460,16,18,39,Erkek,Batı Anadolu,Özel
+95490,16,27,51,Erkek,Akdeniz,Kamu
+55900,8,28,40,Erkek,İstanbul,Özel
+49150,8,36,51,Kadın,Doğu Anadolu,Özel
+399730,14,20,41,Erkek,Akdeniz,Kamu
+70020,11,40,57,Erkek,İstanbul,Özel
+159590,18,0,18,Erkek,Akdeniz,Özel
+83290,12,44,60,Erkek,Doğu Anadolu,Özel
+47560,12,5,25,Kadın,Batı Anadolu,Özel
+103570,16,10,30,Erkek,Batı Anadolu,Özel
+80050,16,31,53,Erkek,İstanbul,Kamu
+65790,12,32,52,Erkek,Batı Anadolu,Özel
+35020,12,29,48,Kadın,Orta Anadolu,Kamu
+35030,5,15,25,Kadın,Karadeniz,Özel
+50370,18,3,25,Erkek,İstanbul,Özel
+72810,16,26,49,Kadın,Doğu Anadolu,Özel
+23780,5,37,49,Erkek,Ege,Özel
+27020,12,1,18,Erkek,Doğu Anadolu,Kamu
+30830,16,11,34,Erkek,Doğu Anadolu,Özel
+39910,12,3,19,Kadın,Ege,Özel
+41880,12,37,57,Kadın,Akdeniz,Özel
+69760,12,40,57,Erkek,İstanbul,Özel
+79330,14,3,23,Erkek,Doğu Anadolu,Özel
+131870,14,31,51,Erkek,Doğu Anadolu,Özel
+20730,8,6,21,Erkek,Batı Anadolu,Özel
+25090,12,12,32,Kadın,Karadeniz,Özel
+127760,16,32,53,Kadın,Batı Anadolu,Kamu
+91080,16,33,53,Kadın,Orta Anadolu,Özel
+89610,14,40,60,Erkek,Orta Anadolu,Özel
+113320,16,12,32,Erkek,Batı Anadolu,Özel
+118740,14,22,43,Kadın,Akdeniz,Kamu
+94150,16,23,44,Kadın,Karadeniz,Özel
+54210,12,13,33,Kadın,Doğu Anadolu,Özel
+27030,5,45,54,Kadın,Karadeniz,Özel
+26170,8,28,41,Kadın,Doğu Anadolu,Özel
+67350,12,7,26,Erkek,İstanbul,Kamu
+40220,5,24,37,Kadın,Ege,Özel
+42400,16,12,35,Erkek,Karadeniz,Özel
+76330,8,45,59,Erkek,Karadeniz,Özel
+123470,16,14,34,Kadın,Ege,Özel
+30140,12,44,61,Erkek,Ege,Özel
+63140,8,34,49,Erkek,İstanbul,Özel
+54690,12,20,39,Erkek,Orta Anadolu,Kamu
+56500,5,17,28,Kadın,İstanbul,Özel
+55170,8,50,62,Erkek,Akdeniz,Özel
+65140,8,32,47,Erkek,Orta Anadolu,Özel
+125600,18,35,58,Erkek,Akdeniz,Özel
+87680,12,34,53,Kadın,Ege,Kamu
+92750,12,19,39,Kadın,Batı Anadolu,Özel
+18810,5,17,28,Kadın,Karadeniz,Özel
+32510,5,27,40,Kadın,Orta Anadolu,Özel
+63050,14,16,35,Kadın,Ege,Özel
+58570,12,18,35,Kadın,Ege,Özel
+57930,11,4,20,Erkek,Orta Anadolu,Özel
+39540,8,29,43,Kadın,Batı Anadolu,Özel
+56050,16,19,43,Erkek,İstanbul,Özel
+40850,18,0,20,Erkek,İstanbul,Özel
+73900,12,22,41,Kadın,Karadeniz,Özel
+36210,12,20,37,Erkek,Karadeniz,Özel
+52650,11,35,50,Erkek,Ege,Özel
+56130,8,47,61,Erkek,İstanbul,Özel
+38980,12,27,43,Kadın,Karadeniz,Özel
+30990,16,37,60,Kadın,Orta Anadolu,Özel
+35120,8,43,58,Kadın,Orta Anadolu,Özel
+52250,16,1,25,Kadın,Orta Anadolu,Özel
+18330,5,48,57,Kadın,Orta Anadolu,Kamu
+72650,12,7,26,Erkek,İstanbul,Özel
+36770,16,2,23,Erkek,Batı Anadolu,Özel
+21140,12,7,26,Kadın,Ege,Özel
+97920,16,22,45,Kadın,Doğu Anadolu,Özel
+58170,16,0,20,Kadın,Batı Anadolu,Özel
+85930,14,30,50,Erkek,Orta Anadolu,Kamu
+37630,12,29,47,Kadın,İstanbul,Özel
+21880,8,23,39,Kadın,Batı Anadolu,Özel
+39210,12,2,19,Erkek,Ege,Özel
+33690,8,14,30,Erkek,Akdeniz,Özel
+56040,16,22,44,Erkek,Doğu Anadolu,Kamu
+58980,16,2,25,Kadın,İstanbul,Özel
+86700,12,26,46,Erkek,Orta Anadolu,Özel
+45940,14,33,53,Erkek,Doğu Anadolu,Kamu
+79840,16,30,54,Kadın,Orta Anadolu,Özel
+34130,12,1,18,Kadın,Ege,Özel
+95500,8,25,40,Erkek,Orta Anadolu,Özel
+51750,12,26,42,Erkek,Orta Anadolu,Özel
+34960,12,12,32,Kadın,Batı Anadolu,Özel
+82740,14,46,64,Erkek,Batı Anadolu,Kamu
+208450,14,15,34,Kadın,Orta Anadolu,Kamu
+24960,5,38,51,Erkek,Orta Anadolu,Özel
+78950,18,24,49,Erkek,Batı Anadolu,Özel
+33770,8,13,25,Erkek,Doğu Anadolu,Özel
+22150,8,5,20,Erkek,Akdeniz,Özel
+53400,8,41,57,Kadın,Ege,Özel
+33390,12,12,29,Kadın,Orta Anadolu,Kamu
+121760,18,22,48,Erkek,Ege,Özel
+72190,14,18,38,Erkek,Batı Anadolu,Özel
+76780,12,35,54,Kadın,Doğu Anadolu,Özel
+167750,16,19,42,Kadın,İstanbul,Özel
+89090,18,5,30,Erkek,Orta Anadolu,Özel
+28560,12,8,27,Kadın,Doğu Anadolu,Özel
+114180,16,42,62,Erkek,İstanbul,Özel
+106990,20,21,49,Erkek,Batı Anadolu,Özel
+34660,5,37,49,Erkek,Doğu Anadolu,Özel
+58270,12,24,44,Kadın,İstanbul,Özel
+50690,14,8,29,Kadın,Akdeniz,Özel
+38750,12,11,29,Erkek,Doğu Anadolu,Özel
+76520,12,16,34,Erkek,İstanbul,Özel
+147970,11,46,61,Erkek,İstanbul,Kamu
+157420,16,6,26,Erkek,Batı Anadolu,Özel
+86530,16,18,39,Kadın,İstanbul,Kamu
+40750,8,3,18,Erkek,İstanbul,Özel
+26900,16,0,23,Erkek,Ege,Özel
+76050,14,3,21,Erkek,Ege,Özel
+78250,12,35,53,Kadın,Doğu Anadolu,Özel
+24100,12,8,25,Erkek,Doğu Anadolu,Özel
+33600,12,11,27,Kadın,İstanbul,Özel
+53300,16,36,58,Erkek,Ege,Kamu
+74380,12,34,51,Erkek,İstanbul,Özel
+55990,14,27,46,Erkek,Ege,Özel
+104700,14,42,60,Erkek,Batı Anadolu,Özel
+144080,20,12,38,Erkek,Akdeniz,Kamu
+49110,14,24,44,Erkek,İstanbul,Özel
+25100,5,32,42,Erkek,Doğu Anadolu,Özel
+35580,8,44,58,Kadın,Akdeniz,Kamu
+55710,12,43,62,Kadın,İstanbul,Özel
+47690,5,19,31,Erkek,Ege,Özel
+65700,12,18,36,Kadın,Karadeniz,Özel
+146870,12,30,48,Erkek,Ege,Özel
+18950,8,21,36,Kadın,Akdeniz,Özel
+69400,5,15,26,Erkek,Karadeniz,Özel
+46050,5,14,26,Erkek,İstanbul,Özel
+28660,8,9,22,Kadın,Doğu Anadolu,Kamu
+38450,18,2,24,Erkek,Doğu Anadolu,Özel
+87290,12,35,55,Kadın,Batı Anadolu,Özel
+140840,18,0,19,Kadın,Batı Anadolu,Kamu
+54380,8,35,51,Kadın,Akdeniz,Özel
+99090,14,25,44,Kadın,Doğu Anadolu,Özel
+61280,12,41,61,Kadın,Batı Anadolu,Özel
+73380,14,23,44,Erkek,Ege,Kamu
+47650,16,41,61,Kadın,Doğu Anadolu,Özel
+24530,12,25,42,Kadın,Doğu Anadolu,Özel
+68750,14,38,59,Erkek,Orta Anadolu,Özel
+72650,8,37,52,Erkek,Ege,Özel
+284370,16,25,47,Erkek,Batı Anadolu,Kamu
+42380,12,5,24,Erkek,Doğu Anadolu,Özel
+29950,8,32,44,Erkek,Akdeniz,Kamu
+49550,11,30,45,Erkek,Doğu Anadolu,Özel
+47870,8,13,29,Erkek,Karadeniz,Kamu
+191860,16,41,62,Kadın,Ege,Kamu
+69150,12,10,26,Erkek,İstanbul,Özel
+121740,12,28,46,Erkek,Ege,Özel
+89640,14,18,39,Kadın,Karadeniz,Kamu
+72670,12,36,54,Erkek,Doğu Anadolu,Özel
+159290,20,18,46,Erkek,Ege,Özel
+85690,16,18,41,Kadın,Karadeniz,Özel
+77640,14,18,37,Erkek,Batı Anadolu,Kamu
+31850,8,10,23,Kadın,Doğu Anadolu,Kamu
+48500,12,43,63,Kadın,Batı Anadolu,Özel
+91510,12,45,64,Erkek,Ege,Kamu
+40670,16,33,57,Kadın,Orta Anadolu,Özel
+30950,8,22,34,Kadın,Karadeniz,Kamu
+78170,8,33,47,Erkek,İstanbul,Özel
+41300,16,6,26,Kadın,Akdeniz,Kamu
+76310,12,19,37,Erkek,Akdeniz,Özel
+47520,11,28,44,Kadın,Karadeniz,Kamu
+18440,8,5,20,Kadın,Akdeniz,Özel
+39960,8,8,23,Erkek,Batı Anadolu,Özel
+108860,12,44,60,Kadın,İstanbul,Özel
+61860,12,17,35,Erkek,Ege,Kamu
+200160,18,28,54,Erkek,İstanbul,Özel
+101730,14,22,43,Kadın,Karadeniz,Kamu
+24990,8,17,33,Kadın,Ege,Özel
+68880,14,0,18,Erkek,Akdeniz,Özel
+25720,5,13,25,Kadın,Batı Anadolu,Özel
+144930,16,35,59,Erkek,Karadeniz,Özel
+49000,12,36,54,Kadın,Karadeniz,Özel
+95470,14,10,29,Kadın,İstanbul,Kamu
+415340,18,20,42,Kadın,Doğu Anadolu,Özel
+97210,20,17,44,Erkek,Ege,Özel
+53770,12,30,50,Erkek,İstanbul,Kamu
+45370,5,36,49,Erkek,İstanbul,Özel
+44630,5,35,47,Erkek,Orta Anadolu,Özel
+124830,11,22,37,Erkek,Batı Anadolu,Özel
+82210,8,34,48,Erkek,Orta Anadolu,Kamu
+44780,11,41,60,Kadın,Orta Anadolu,Özel
+51440,16,0,23,Kadın,İstanbul,Kamu
+36940,12,38,54,Erkek,Karadeniz,Özel
+37940,12,19,37,Kadın,Karadeniz,Özel
+104260,16,25,49,Erkek,Ege,Kamu
+129510,16,16,40,Kadın,Orta Anadolu,Kamu
+127600,12,27,45,Erkek,Akdeniz,Özel
+50190,12,29,48,Erkek,Akdeniz,Kamu
+60450,12,37,55,Erkek,İstanbul,Özel
+101120,16,18,39,Erkek,Akdeniz,Kamu
+50730,8,9,22,Erkek,İstanbul,Özel
+73290,16,0,20,Erkek,Karadeniz,Kamu
+29270,8,47,59,Erkek,İstanbul,Özel
+39840,12,40,59,Erkek,Akdeniz,Özel
+135700,18,8,33,Erkek,Karadeniz,Kamu
+57190,8,45,61,Erkek,Doğu Anadolu,Özel
+36420,16,0,20,Kadın,Akdeniz,Özel
+75690,12,38,57,Erkek,Ege,Kamu
+62870,8,19,35,Erkek,Ege,Özel
+52640,12,14,30,Kadın,Doğu Anadolu,Özel
+26010,8,17,33,Kadın,Karadeniz,Özel
+74470,12,36,55,Erkek,Akdeniz,Özel
+29550,12,45,64,Kadın,Doğu Anadolu,Özel
+77080,16,4,26,Kadın,Batı Anadolu,Özel
+64050,16,8,31,Kadın,İstanbul,Özel
+35160,16,4,28,Kadın,Doğu Anadolu,Özel
+53590,12,15,34,Kadın,Karadeniz,Kamu
+57530,16,10,30,Erkek,Akdeniz,Kamu
+60130,16,35,57,Kadın,İstanbul,Kamu
+79010,12,39,58,Erkek,Orta Anadolu,Özel
+34920,8,43,56,Erkek,Orta Anadolu,Kamu
+123850,12,43,60,Erkek,İstanbul,Özel
+166880,16,16,39,Erkek,Batı Anadolu,Kamu
+100570,12,38,55,Erkek,Batı Anadolu,Özel
+21260,8,43,58,Kadın,Doğu Anadolu,Özel
+130880,16,15,39,Erkek,İstanbul,Özel
+37350,14,0,18,Erkek,İstanbul,Özel
+59390,8,43,57,Kadın,Batı Anadolu,Özel
+53720,16,32,52,Kadın,Ege,Özel
+57520,12,43,59,Erkek,Ege,Özel
+56840,12,1,21,Erkek,Ege,Özel
+42810,12,45,63,Kadın,Orta Anadolu,Kamu
+38980,12,6,26,Kadın,Batı Anadolu,Özel
+120270,18,26,50,Erkek,Akdeniz,Özel
+61380,14,41,63,Kadın,Akdeniz,Özel
+65980,11,42,61,Erkek,Ege,Özel
+68710,12,47,64,Kadın,İstanbul,Kamu
+28830,8,50,62,Erkek,İstanbul,Özel
+196570,12,27,47,Erkek,Batı Anadolu,Özel
+129260,16,29,49,Kadın,Doğu Anadolu,Özel
+62620,12,21,39,Kadın,Doğu Anadolu,Özel
+70750,16,15,37,Erkek,İstanbul,Özel
+83300,12,42,59,Erkek,Doğu Anadolu,Özel
+63750,14,16,37,Erkek,Batı Anadolu,Özel
+41200,5,25,37,Erkek,Batı Anadolu,Özel
+50230,8,16,29,Erkek,İstanbul,Kamu
+76530,12,27,43,Kadın,İstanbul,Özel
+261370,16,38,61,Erkek,İstanbul,Kamu
+49010,16,3,23,Kadın,Batı Anadolu,Özel
+67900,8,35,48,Erkek,Doğu Anadolu,Özel
+58210,11,24,42,Kadın,Doğu Anadolu,Özel
+22570,5,41,51,Kadın,Karadeniz,Özel
+120900,14,3,24,Kadın,Karadeniz,Özel
+108250,18,0,21,Erkek,Ege,Kamu
+38980,14,13,33,Erkek,Batı Anadolu,Özel
+70170,16,19,43,Kadın,Ege,Özel
+37880,12,10,29,Erkek,Akdeniz,Özel
+62040,16,21,45,Erkek,Akdeniz,Özel
+48200,12,36,52,Erkek,Akdeniz,Özel
+58280,16,0,18,Kadın,Batı Anadolu,Kamu
+78670,11,33,48,Erkek,İstanbul,Özel
+117040,16,14,34,Erkek,Akdeniz,Özel
+42800,8,43,57,Erkek,Orta Anadolu,Özel
+58760,12,44,62,Erkek,Doğu Anadolu,Kamu
+84210,11,43,59,Kadın,Karadeniz,Özel
+31890,12,7,25,Kadın,Orta Anadolu,Özel
+37110,8,7,23,Kadın,Akdeniz,Özel
+131400,14,34,55,Kadın,İstanbul,Özel
+99480,14,45,64,Kadın,Akdeniz,Özel
+35620,8,18,30,Kadın,İstanbul,Özel
+85360,16,34,58,Erkek,Batı Anadolu,Özel
+85930,14,27,45,Kadın,İstanbul,Kamu
+99810,18,10,34,Kadın,Doğu Anadolu,Özel
+77980,16,0,20,Kadın,Karadeniz,Özel
+119050,18,22,44,Erkek,Batı Anadolu,Kamu
+208210,18,25,47,Kadın,Karadeniz,Kamu
+68950,16,0,21,Kadın,Ege,Özel
+73630,20,7,35,Erkek,Batı Anadolu,Özel
+104800,18,5,27,Kadın,Orta Anadolu,Özel
+26760,12,5,23,Erkek,Batı Anadolu,Kamu
+51810,8,16,32,Erkek,İstanbul,Kamu
+21950,18,0,22,Kadın,Akdeniz,Özel
+71400,12,25,41,Erkek,Karadeniz,Kamu
+171410,16,34,56,Erkek,Batı Anadolu,Özel
+121180,20,0,22,Erkek,Ege,Özel
+34760,14,32,53,Erkek,İstanbul,Özel
+55240,11,45,64,Erkek,Doğu Anadolu,Özel
+74570,14,4,26,Kadın,İstanbul,Özel
+132490,16,36,60,Erkek,Orta Anadolu,Özel
+53810,8,47,63,Erkek,Ege,Özel
+154510,16,15,36,Erkek,İstanbul,Kamu
+22780,16,0,21,Kadın,Doğu Anadolu,Özel
+130960,18,31,56,Erkek,İstanbul,Özel
+40370,12,3,20,Erkek,İstanbul,Özel
+82380,16,17,41,Kadın,Ege,Kamu
+52370,8,21,33,Kadın,İstanbul,Özel
+46290,16,8,29,Erkek,Orta Anadolu,Özel
+62040,18,16,39,Kadın,Doğu Anadolu,Özel
+101040,12,26,43,Erkek,İstanbul,Özel
+29240,8,12,24,Kadın,Karadeniz,Kamu
+53940,18,0,24,Erkek,Akdeniz,Özel
+71350,12,46,63,Erkek,İstanbul,Özel
+96040,11,30,47,Kadın,Ege,Özel
+82670,16,29,51,Erkek,Akdeniz,Özel
+49490,16,35,57,Erkek,Batı Anadolu,Özel
+52240,18,4,26,Kadın,İstanbul,Kamu
+52320,14,1,19,Erkek,Akdeniz,Özel
+21690,8,22,37,Kadın,Karadeniz,Özel
+36290,12,5,21,Erkek,Batı Anadolu,Özel
+46750,12,12,28,Erkek,İstanbul,Özel
+124850,12,12,30,Erkek,Akdeniz,Özel
+30600,5,12,24,Kadın,Doğu Anadolu,Özel
+32410,11,8,25,Erkek,Doğu Anadolu,Kamu
+34720,11,47,62,Erkek,Karadeniz,Özel
+24490,8,8,22,Kadın,İstanbul,Özel
+65850,12,13,30,Erkek,Ege,Kamu
+66140,12,34,53,Erkek,Akdeniz,Özel
+38900,14,9,27,Erkek,İstanbul,Özel
+75980,12,12,29,Erkek,İstanbul,Özel
+76250,12,14,32,Kadın,Orta Anadolu,Özel
+64270,8,40,53,Erkek,İstanbul,Özel
+36040,8,44,59,Kadın,Doğu Anadolu,Kamu
+100940,12,11,31,Erkek,Ege,Özel
+60190,8,40,56,Erkek,İstanbul,Özel
+70540,11,23,38,Erkek,Ege,Özel
+76450,12,35,52,Kadın,Orta Anadolu,Özel
+30570,8,40,52,Erkek,Batı Anadolu,Özel
+113630,11,25,40,Kadın,Batı Anadolu,Kamu
+95450,16,38,60,Kadın,Batı Anadolu,Özel
+45500,12,0,18,Erkek,İstanbul,Özel
+88640,12,20,39,Kadın,İstanbul,Özel
+38670,16,8,31,Erkek,Doğu Anadolu,Özel
+49490,16,11,34,Erkek,Orta Anadolu,Özel
+83090,16,14,34,Kadın,Karadeniz,Özel
+80320,12,31,48,Erkek,Orta Anadolu,Özel
+22470,5,41,53,Kadın,Batı Anadolu,Özel
+61720,16,5,29,Erkek,Orta Anadolu,Kamu
+41900,14,13,32,Kadın,Ege,Özel
+73200,18,7,29,Erkek,Batı Anadolu,Özel
+25670,8,48,60,Kadın,Ege,Özel
+47160,8,9,24,Kadın,Ege,Kamu
+79980,16,37,60,Kadın,Doğu Anadolu,Özel
+29940,12,11,31,Kadın,Karadeniz,Özel
+133160,18,29,54,Kadın,Batı Anadolu,Özel
+109670,16,24,44,Erkek,İstanbul,Özel
+30790,8,3,18,Erkek,Akdeniz,Özel
+50470,14,29,47,Erkek,İstanbul,Özel
+36280,12,21,40,Erkek,Doğu Anadolu,Özel
+71990,16,38,61,Erkek,Doğu Anadolu,Özel
+50910,14,14,34,Erkek,Ege,Kamu
+67410,16,8,31,Erkek,İstanbul,Özel
+65110,11,16,33,Erkek,Orta Anadolu,Özel
+36730,5,43,53,Kadın,Karadeniz,Kamu
+41340,12,3,21,Erkek,Akdeniz,Özel
+79150,16,26,47,Erkek,Karadeniz,Kamu
+35240,16,15,36,Erkek,Karadeniz,Kamu
+57740,12,46,62,Kadın,İstanbul,Özel
+47860,12,24,40,Kadın,Akdeniz,Özel
+68430,16,42,63,Kadın,Batı Anadolu,Özel
+62980,11,43,62,Erkek,Doğu Anadolu,Özel
+39830,14,20,40,Erkek,Karadeniz,Özel
+92620,16,5,28,Kadın,İstanbul,Özel
+49940,14,17,37,Erkek,Batı Anadolu,Özel
+28720,8,16,31,Erkek,Ege,Kamu
+46400,14,36,57,Erkek,Doğu Anadolu,Özel
+18100,5,54,64,Erkek,Orta Anadolu,Özel
+33750,11,1,19,Erkek,Karadeniz,Özel
+187550,16,12,34,Kadın,İstanbul,Özel
+181730,16,29,52,Kadın,Akdeniz,Özel
+30950,8,46,59,Kadın,Orta Anadolu,Özel
+66970,14,38,57,Kadın,Batı Anadolu,Özel
+98110,12,23,39,Erkek,Doğu Anadolu,Özel
+136220,16,39,59,Kadın,Batı Anadolu,Özel
+48370,14,33,51,Kadın,Karadeniz,Kamu
+58710,16,0,18,Kadın,Karadeniz,Özel
+89540,16,35,58,Kadın,Doğu Anadolu,Kamu
+66670,8,31,46,Erkek,Karadeniz,Özel
+146720,12,43,63,Kadın,Orta Anadolu,Özel
+35800,5,27,37,Erkek,Akdeniz,Özel
+83630,11,14,29,Erkek,İstanbul,Özel
+47050,11,2,21,Erkek,İstanbul,Özel
+52530,12,3,23,Erkek,Ege,Kamu
+48220,12,39,55,Erkek,Ege,Özel
+40450,8,36,48,Kadın,Batı Anadolu,Özel
+100910,16,14,37,Kadın,Ege,Kamu
+27540,5,34,47,Kadın,Batı Anadolu,Özel
+81420,12,27,45,Kadın,İstanbul,Özel
+62910,14,12,32,Kadın,Orta Anadolu,Özel
+40030,8,19,35,Kadın,Batı Anadolu,Özel
+104500,12,7,24,Kadın,Ege,Özel
+81910,12,14,32,Erkek,Karadeniz,Özel
+156870,16,38,61,Erkek,İstanbul,Özel
+41940,5,46,55,Erkek,Karadeniz,Özel
+30350,5,28,38,Kadın,Doğu Anadolu,Özel
+48410,12,40,56,Kadın,Akdeniz,Özel
+85200,16,9,31,Kadın,Akdeniz,Özel
+77570,16,1,24,Erkek,Batı Anadolu,Kamu
+72270,12,6,25,Kadın,İstanbul,Kamu
+97040,18,15,41,Kadın,Orta Anadolu,Kamu
+85610,14,34,52,Erkek,İstanbul,Özel
+42490,18,1,24,Kadın,Doğu Anadolu,Özel
+52290,16,42,64,Kadın,İstanbul,Özel
+28590,16,2,23,Kadın,Karadeniz,Özel
+48930,5,15,27,Kadın,İstanbul,Özel
+56100,16,3,23,Erkek,Doğu Anadolu,Özel
+99600,14,31,49,Kadın,İstanbul,Kamu
+36330,8,42,55,Erkek,Ege,Özel
+38990,8,13,29,Erkek,İstanbul,Özel
+48050,8,42,54,Kadın,Ege,Özel
+48780,12,6,25,Erkek,Karadeniz,Özel
+62670,5,28,38,Erkek,Batı Anadolu,Özel
+22500,12,15,34,Kadın,Batı Anadolu,Özel
+40780,8,11,26,Erkek,Akdeniz,Özel
+36180,5,41,52,Erkek,Karadeniz,Özel
+27970,8,7,19,Erkek,Orta Anadolu,Özel
+37240,8,6,20,Kadın,Karadeniz,Kamu
+46410,16,0,21,Erkek,Karadeniz,Kamu
+49320,14,3,21,Erkek,Karadeniz,Özel
+162810,14,41,61,Erkek,Akdeniz,Özel
+40530,20,2,27,Kadın,Akdeniz,Özel
+60870,12,16,33,Kadın,Orta Anadolu,Özel
+75100,18,28,50,Kadın,Akdeniz,Özel
+29390,14,4,23,Kadın,Batı Anadolu,Özel
+63390,12,7,27,Erkek,Batı Anadolu,Özel
+30620,14,42,61,Erkek,İstanbul,Özel
+66680,12,43,62,Erkek,Doğu Anadolu,Kamu
+23770,8,47,61,Erkek,Akdeniz,Özel
+32240,5,15,28,Kadın,İstanbul,Özel
+54810,18,12,38,Erkek,Doğu Anadolu,Özel
+78950,12,27,45,Kadın,Orta Anadolu,Özel
+64450,16,13,33,Kadın,Doğu Anadolu,Özel
+62380,12,5,21,Erkek,İstanbul,Özel
+22960,5,18,28,Erkek,Ege,Özel
+59660,12,0,19,Kadın,Batı Anadolu,Özel
+33750,8,29,45,Kadın,Ege,Özel
+188170,16,41,64,Erkek,İstanbul,Özel
+41650,12,11,28,Erkek,İstanbul,Özel
+97670,16,0,20,Erkek,Akdeniz,Kamu
+68600,8,14,29,Erkek,İstanbul,Kamu
+55730,5,33,46,Erkek,Batı Anadolu,Özel
+25810,8,47,61,Kadın,Ege,Özel
+80230,18,40,63,Erkek,Doğu Anadolu,Kamu
+35230,11,3,20,Kadın,Akdeniz,Özel
+71540,12,6,22,Erkek,Batı Anadolu,Kamu
+99110,12,6,26,Kadın,Batı Anadolu,Özel
+34440,8,19,32,Kadın,Karadeniz,Özel
+32460,8,7,21,Erkek,Karadeniz,Özel
+47740,12,20,39,Kadın,Akdeniz,Özel
+52850,12,0,19,Kadın,Orta Anadolu,Özel
+66310,18,40,64,Kadın,Akdeniz,Özel
+31150,16,1,22,Kadın,Doğu Anadolu,Özel
+101240,16,26,46,Kadın,Doğu Anadolu,Özel
+21810,5,48,61,Kadın,Doğu Anadolu,Özel
+124840,12,26,43,Kadın,Akdeniz,Özel
+37260,5,50,62,Erkek,İstanbul,Kamu
+24740,16,11,33,Kadın,Akdeniz,Özel
+43140,11,45,64,Erkek,Orta Anadolu,Özel
+21490,12,2,22,Erkek,Ege,Özel
+43220,8,21,34,Erkek,Orta Anadolu,Kamu
+52460,8,30,46,Erkek,İstanbul,Kamu
+93610,18,41,63,Erkek,Ege,Özel
+39880,12,42,59,Erkek,İstanbul,Kamu
+63810,12,43,61,Kadın,Akdeniz,Özel
+50870,16,17,37,Kadın,İstanbul,Özel
+141320,12,17,33,Kadın,İstanbul,Özel
+164980,16,38,59,Erkek,Karadeniz,Özel
+43390,16,24,45,Erkek,Karadeniz,Özel
+28090,5,8,20,Erkek,Karadeniz,Özel
+60800,12,31,47,Erkek,Akdeniz,Özel
+50030,5,34,47,Erkek,Batı Anadolu,Özel
+54980,12,8,26,Kadın,İstanbul,Kamu
+80710,12,27,44,Erkek,Batı Anadolu,Özel
+49480,16,34,54,Erkek,Doğu Anadolu,Özel

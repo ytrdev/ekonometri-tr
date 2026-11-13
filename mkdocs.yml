@@ -1,0 +1,56 @@
+site_name: ekonometri-tr
+site_description: Türkçe ekonometri kütüphanesi. Tahmin, Türkçe yorum, varsayım testi ve Word raporu.
+site_url: https://ytrdev.github.io/ekonometri-tr/
+repo_url: https://github.com/ytrdev/ekonometri-tr
+repo_name: ytrdev/ekonometri-tr
+edit_uri: ""
+docs_dir: site_kaynak
+site_dir: site
+copyright: MIT lisansı · veriler simüle edilmiştir
+
+theme:
+  name: material
+  language: tr
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      toggle: { icon: material/weather-night, name: Koyu tema }
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      toggle: { icon: material/weather-sunny, name: Açık tema }
+
+plugins:
+  - search:
+      lang: [tr, en]
+  - mkdocs-jupyter:
+      execute: false
+      include_source: true
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc: { permalink: true }
+  - pymdownx.highlight
+  - pymdownx.superfences
+
+nav:
+  - Ana sayfa: index.md
+  - Stata kullanıcıları için: rehber.md
+  - Fonksiyon başvurusu: fonksiyonlar.md
+  - Ders defterleri:
+      - 01 · Çoklu regresyon: defterler/01_coklu_regresyon.ipynb
+      - 02 · Zaman serisi: defterler/02_zaman_serisi.ipynb
+      - 03 · Logit ve probit: defterler/03_logit_probit.ipynb
+      - 04 · Panel veri: defterler/04_panel_veri.ipynb
+      - 05 · Araç değişken: defterler/05_arac_degisken.ipynb
+      - 06 · Kendi verin ve Stata: defterler/06_kendi_veri_stata.ipynb
+      - 07 · Tez araç kutusu: defterler/07_tez_arac_kutusu.ipynb
+  - Doğrulama: dogrulama.md
+  - Değişiklik günlüğü: degisiklikler.md
