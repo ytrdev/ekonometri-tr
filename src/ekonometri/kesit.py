@@ -88,7 +88,7 @@ class YatayKesitSonucu:
             s.append(f"   {ad:<38}{sayi(r['İstatistik'], 3):>12}{sd:>8}{p_yaz(r['p']):>10}")
         s.append(f"   Ortalama korelasyon ρ = {sayi(self.ortalama_rho, 3)}, ortalama |ρ| = {sayi(self.ortalama_mutlak_rho, 3)}")
         if self.eksik_cift:
-            s.append(f"   Not: ortak dönemi 1 ya da daha az olan {self.eksik_cift} birim çifti hesaba katılmadı.")
+            s.append(f"   Not: ortak dönemi 3'ten az olan {self.eksik_cift} birim çifti hesaba katılmadı.")
         s.append(f"   {self.karar()}")
         return "\n".join(s)
 
@@ -207,7 +207,7 @@ def yatay_kesit_bagimliligi(veri: pd.DataFrame, degisken, birim: str | None = No
         for j in range(i):
             m = var[:, i] & var[:, j]
             t = int(m.sum())
-            if t <= 1:
+            if t < 3:  # iki gözlemde Pearson korelasyonu her zaman ±1'dir; LM ve CD'yi şişirir
                 eksik += 1
                 continue
             a, b = A[m, i], A[m, j]
@@ -215,6 +215,8 @@ def yatay_kesit_bagimliligi(veri: pd.DataFrame, degisken, birim: str | None = No
                 raise _hata("Bazı birimlerde seri zaman içinde sabit; korelasyon hesaplanamıyor.")
             rho.append(float(np.corrcoef(a, b)[0, 1]))
             tij.append(t)
+    if not rho:
+        raise _hata("Korelasyon hesaplanamadı: hiçbir birim çiftinde en az 3 ortak dönem yok.")
     rho, tij = np.array(rho), np.array(tij, dtype=float)
     k = len(rho)
     lm = float(np.sum(tij * rho**2))

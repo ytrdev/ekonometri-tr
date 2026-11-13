@@ -236,6 +236,9 @@ def test_nbreg_asiri_yayilim_yokken():
     nb, po = ek.nbreg("kardes ~ egitim + tecrube", g), ek.poisson("kardes ~ egitim + tecrube", g)
     assert nb.log_olabilirlik == po.log_olabilirlik and nb.ek_bilgi["alfa_lr"] == (0.0, 1.0)
     assert nb.log_olabilirlik_sifir >= po.log_olabilirlik_sifir and np.allclose(nb.katsayilar, po.katsayilar)
+    assert np.allclose(nb.standart_hatalar, po.standart_hatalar)
+    assert nb.ek_bilgi["alfa_sinir"] and np.isnan(nb.ek_parametreler["Std. hata"]).all()
+    assert "standart hata yoktur" in str(nb)
 
 
 # --------------------------------------------------------------------------- lincom, zandrews, xtcd, xtcsd, pescadf, todayamamoto
@@ -284,3 +287,6 @@ def test_stata_kesit_cips(s):
     assert c.deterministik == "trend" and c.gecikme == 0
     with pytest.raises(ek.EkonometriHatasi, match="lags"):
         s("pescadf ls")
+    s.veri.attrs.pop("xtset")
+    with pytest.raises(ek.EkonometriHatasi, match="xtset"):
+        s("xtcsd")

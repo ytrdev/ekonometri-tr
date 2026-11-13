@@ -265,6 +265,8 @@ class MLSonuc:
         if self.tur == "nbreg":
             t = self.ek_bilgi["alfa_lr"]
             s.append(f" α = 0 LR testi: χ̄²(01) = {sayi(t[0], 2)}, {p_cumle(t[1])}")
+            if self.ek_bilgi.get("alfa_sinir"):
+                s.append(" α = 0 sınırında: katsayılar Poisson limitidir, α için standart hata yoktur.")
         s.append("═" * g)
         return "\n".join(s)
 
@@ -796,7 +798,7 @@ def nbreg(formul: str, veri: pd.DataFrame, kovaryans: str = "klasik", kume: str 
         r = mod.fit(start_params=r0.params, method="newton", disp=False, maxiter=200)
     params = r.params.copy()  # β, α
     llf = float(r.llf)
-    pois = poisson(formul, veri, maruziyet=maruziyet)
+    pois = poisson(formul, veri, kovaryans=kovaryans, kume=kume, maruziyet=maruziyet)
     # NB, Poisson'u kapsar: geçerli bir en çok olabilirlik çözümü Poisson'un log-olabilirliğinden küçük olamaz. Optimizasyon
     # α sınırına (0) gidip NaN verirse ya da (sürüm / başlangıç değerine bağlı olarak) yanlış bir noktada durursa
     # ln α ile sınırlı, Poisson'dan başlayan yedek optimizasyon yapılır.
@@ -831,18 +833,27 @@ def nbreg(formul: str, veri: pd.DataFrame, kovaryans: str = "klasik", kume: str 
     sinirda = params[-1] < 1e-6 or llf < pois.log_olabilirlik
     if sinirda:
         # α ≈ 0: aşırı yayılım yok, model Poisson'a indirgenir. Çok küçük α'da NB olabilirliği sayısal olarak güvenilmez
-        # olduğundan β ve log-olabilirlik Poisson limitinden alınır (LR = 0, p = 1; Stata da bu durumda χ̄² = 0 raporlar).
+        # olduğundan β, log-olabilirlik ve β'nın kovaryansı Poisson limitinden alınır (LR = 0, p = 1). α'nın standart
+        # hatası bu sınırda tanımlı değildir; Hessian'dan üretilen sayı (şişmiş /ln α hatası) yazılmaz.
         params = np.r_[pois._parametreler, 1e-8]  # α ≈ 0 (ortamdan bağımsız sabit sınır değeri)
         llf = pois.log_olabilirlik
-    alfa = params[-1]
-    H_inv = np.linalg.inv(-mod.hessian(params))
-    kov, kume_kod = _kovaryans_sec(kovaryans, kume, veri_tum, X_df.index)
-    if kov == "klasik":
-        V, kov_ac = H_inv, "klasik (OIM)"
+        Vp = np.asarray(pois.kovaryans_matrisi, dtype=float)
+        V = np.full((k + 1, k + 1), np.nan)
+        V[:k, :k] = Vp[:k, :k]
+        kov, kov_ac = pois.kovaryans_turu, pois.kovaryans_aciklama
+        se_alfa = se_lnalfa = float("nan")
     else:
-        V, kov_ac = _sandvic(H_inv, mod.score_obs(params), kov, kume_kod)
-    se_alfa = np.sqrt(V[-1, -1])
-    ek_df = pd.DataFrame({"Değer": [np.log(alfa), alfa], "Std. hata": [se_alfa / alfa, se_alfa]}, index=["/ln α", "α"])
+        alfa_ici = params[-1]
+        H_inv = np.linalg.inv(-mod.hessian(params))
+        kov, kume_kod = _kovaryans_sec(kovaryans, kume, veri_tum, X_df.index)
+        if kov == "klasik":
+            V, kov_ac = H_inv, "klasik (OIM)"
+        else:
+            V, kov_ac = _sandvic(H_inv, mod.score_obs(params), kov, kume_kod)
+        se_alfa = float(np.sqrt(V[-1, -1]))
+        se_lnalfa = se_alfa / alfa_ici
+    alfa = params[-1]
+    ek_df = pd.DataFrame({"Değer": [np.log(alfa), alfa], "Std. hata": [se_lnalfa, se_alfa]}, index=["/ln α", "α"])
     lr = 0.0 if sinirda else max(0.0, 2 * (llf - pois.log_olabilirlik))
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
@@ -873,7 +884,11 @@ def nbreg(formul: str, veri: pd.DataFrame, kovaryans: str = "klasik", kume: str 
         tahmin,
         veri_tum,
         y=pd.Series(y, index=X_df.index),
-        ek_bilgi={"alfa_lr": (lr, 0.5 * stats.chi2.sf(lr, 1) if lr > 0 else 1.0), "lr_sd": k - 1},
+        ek_bilgi={
+            "alfa_lr": (lr, 0.5 * stats.chi2.sf(lr, 1) if lr > 0 else 1.0),
+            "lr_sd": k - 1,
+            "alfa_sinir": sinirda,
+        },
     )
 
 

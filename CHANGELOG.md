@@ -15,7 +15,9 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr-TR/1.1.0/) önerisine, s
 - Bağımsız doğrulamaya 5 yeni grup (R car, urca, plm): toplam 27
 
 ### Düzeltildi
-- `nbreg`: α → 0 sınırında (varyans ≤ ortalama) Stata gibi Poisson limiti raporlanır; sayısal hatadan doğan sahte LR ve sabitli modelin Poisson'dan küçük log-olabilirliği giderildi
+- `nbreg`: α → 0 sınırında (varyans ≤ ortalama) Stata gibi Poisson limiti raporlanır; sayısal hatadan doğan sahte LR ve sabitli modelin Poisson'dan küçük log-olabilirliği giderildi. Sınırda α'nın standart hatası yazılmaz; katsayı kovaryansı Poisson modelinden alınır
+- Yatay kesit testinde ortak dönemi 3'ten az olan birim çiftleri hesaba katılmaz (iki gözlemde korelasyon her zaman ±1'dir)
+- `xtcsd`, `xtset` yokken Türkçe hata verir
 - Doğrulama betiği NaN farkları başarı sayıyordu; artık başarısızlık sayılıyor (önceki sürümde nbreg satırı bu yüzden yanlışlıkla ✅ görünüyordu)
 
 ### Değişti

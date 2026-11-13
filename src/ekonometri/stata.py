@@ -2328,8 +2328,11 @@ class Stata:
         from .panel import PanelSonuc
 
         m = self._model_gerekli(PanelSonuc)
-        xt = self.veri.attrs.get("xtset")
-        sonuc = yatay_kesit_bagimliligi(self.veri, m, xt[0], xt[1])
+        v = self._veri_gerekli()
+        xt = v.attrs.get("xtset")
+        if xt is None:
+            raise _hata("xtcsd için önce panel yapısını tanımla: xtset birim zaman")
+        sonuc = yatay_kesit_bagimliligi(v, m, xt[0], xt[1])
         self._yaz(sonuc)
         return sonuc
 

@@ -71,6 +71,21 @@ def test_cips_kesik_ve_dengesiz_cd():
         ek.cips(u, "y", "id", "t")
 
 
+def test_iki_donemlik_ortusme_atlanir():
+    rng = np.random.default_rng(0)
+    y1 = rng.normal(size=6)
+    y3 = y1 + rng.normal(size=6)
+    rows = [(1, t + 1, y1[t]) for t in range(6)] + [(3, t + 1, y3[t]) for t in range(6)]
+    rows += [(2, 1, 0.0), (2, 2, 5.0)]  # 1 ve 3 ile yalnız iki dönem: korelasyon mekanik olarak ±1
+    v = pd.DataFrame(rows, columns=["id", "t", "y"])
+    r = ek.yatay_kesit_bagimliligi(v, "y", "id", "t")
+    assert r.eksik_cift == 2 and np.isclose(r.ortalama_rho, np.corrcoef(y1, y3)[0, 1])
+    assert "3'ten az" in str(r)
+    kisa = pd.DataFrame([(i, t, float(t + i)) for i in (1, 2, 3) for t in (1, 2)], columns=["id", "t", "y"])
+    with pytest.raises(ek.EkonometriHatasi, match="3 ortak dönem"):
+        ek.yatay_kesit_bagimliligi(kisa, "y", "id", "t")
+
+
 def test_kritik_deger_tablosu():
     from ekonometri.kesit import _cips_kritik
 
